@@ -128,7 +128,7 @@
 						<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" >+1-727-989-00-35</a>
 					</div>
 					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Request a phone call</a>
-					<?echo my_site_custom_languages_selector_template();?>
+					<? //echo my_site_custom_languages_selector_template();?>
 				</div>
 				<div class="mobile-menu-opener"></div>
 				<div class="clearfix"></div>
