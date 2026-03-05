@@ -95,11 +95,11 @@
 </div>
 <header class="fixed">
 
-	<?if(wpm_get_language() == 'en'): //Локализация?>
+	<?if(wpm_get_language() == 'en' || is_front_page()): //Локализация?>
 		<div class="container">
 			<div class="header-content">
 				<div class="logo">
-					<a href="/en/">
+					<a href="/">
                         <img src="<?= get_field('logo',7) ?>" alt="Логотип компании Светлячок">
 						<div class="header">Firefly</div>
                     </a>
@@ -125,10 +125,10 @@
 
 				<div class="contacts">
 					<div class="phone">
-						<!-- <a href="tel:<?= get_field('phone',7) ?>"><?= get_field('phone',7) ?></a> -->
+						<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" >+1-727-989-00-35</a>
 					</div>
 					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Request a phone call</a>
-					<?echo my_site_custom_languages_selector_template();?>
+					<? //echo my_site_custom_languages_selector_template();?>
 				</div>
 				<div class="mobile-menu-opener"></div>
 				<div class="clearfix"></div>
@@ -161,9 +161,9 @@
 				<div class="contacts">
 					<div class="phone">
 						<? if(isMobile()) {?>
-							<a href="tel:<?= get_field('phone',7) ?>"><?= get_field('phone',7) ?></a>
+							<a href="tel:<?= '+1-727-989-00-35' ?>"><?= '+1-727-989-00-35' ?></a>
 						<? } else { ?>
-							<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" ><?= get_field('phone',7) ?></a>
+							<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" ><?= '+1-727-989-00-35' ?></a>
 						<? } ?>
 					</div>
 					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Заказать звонок</a>
