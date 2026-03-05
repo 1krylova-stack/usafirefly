@@ -379,48 +379,54 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
             }, false);
 
 
-        //Yandex maps lazyload
+        //Google maps lazyload
             document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(initYandexMap, 10000);
+                    setTimeout(initGoogleMap, 10000);
             });
 
-            document.addEventListener('scroll', initYandexMapOnEvent);
-            document.addEventListener('mousemove', initYandexMapOnEvent);
-            document.addEventListener('touchstart', initYandexMapOnEvent);
+            document.addEventListener('scroll', initGoogleMapOnEvent);
+            document.addEventListener('mousemove', initGoogleMapOnEvent);
+            document.addEventListener('touchstart', initGoogleMapOnEvent);
 
-            function initYandexMapOnEvent (e) {
-                initYandexMap();
-                e.currentTarget.removeEventListener(e.type, initYandexMapOnEvent);
+            function initGoogleMapOnEvent (e) {
+                initGoogleMap();
+                e.currentTarget.removeEventListener(e.type, initGoogleMapOnEvent);
             }
 
-            function initYandexMap () {
-                if (window.yandexMapDidInit) {
+            function initGoogleMap () {
+                if (window.googleMapDidInit) {
                     return false;
                 }
-                window.yandexMapDidInit = true;
+                window.googleMapDidInit = true;
 
-                const script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.async = true;
-
-                script.src = 'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A66389cd1730e977d061cfad2288cee0787e9d22ca5e303fbf367ff29e70b5868&width=100%25&height=620&lang=ru_RU&scroll=false';
+                const desktopIframe = document.createElement('iframe');
+                desktopIframe.src = 'https://www.google.com/maps?q=1221+Drew+Street,+Clearwater,+Florida+33755&output=embed';
+                desktopIframe.width = '100%';
+                desktopIframe.height = '620';
+                desktopIframe.style.border = '0';
+                desktopIframe.loading = 'lazy';
+                desktopIframe.referrerPolicy = 'no-referrer-when-downgrade';
+                desktopIframe.allowFullscreen = true;
 
                 var element =  document.getElementById('mapHolder');
                 if (typeof(element) != 'undefined' && element != null)
                 {
-                    document.getElementById("mapHolder").appendChild(script);
+                    document.getElementById("mapHolder").appendChild(desktopIframe);
                 }
 
-                const script_mobile = document.createElement('script');
-                script_mobile.type = 'text/javascript';
-                script_mobile.async = true;
-
-                script_mobile.src = 'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4f967e6c1f547972f95c56692f07147df1f013e3d8ae7a5674b4db6f17c98777&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false';
+                const mobileIframe = document.createElement('iframe');
+                mobileIframe.src = 'https://www.google.com/maps?q=1221+Drew+Street,+Clearwater,+Florida+33755&output=embed';
+                mobileIframe.width = '100%';
+                mobileIframe.height = '400';
+                mobileIframe.style.border = '0';
+                mobileIframe.loading = 'lazy';
+                mobileIframe.referrerPolicy = 'no-referrer-when-downgrade';
+                mobileIframe.allowFullscreen = true;
 
                 var element_mobile =  document.getElementById('mapHolderMobile');
                 if (typeof(element_mobile) != 'undefined' && element_mobile != null)
                 {
-                    document.getElementById("mapHolderMobile").appendChild(script_mobile);
+                    document.getElementById("mapHolderMobile").appendChild(mobileIframe);
                 }
             }
     </script>
