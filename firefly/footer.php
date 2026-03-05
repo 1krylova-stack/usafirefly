@@ -7,6 +7,7 @@ $ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
 $ff_ts = time();
 $ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
+$ff_popup_is_en = false;
 ?>
 
 <?php if(false) {?>
@@ -110,8 +111,8 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>GET A PRICE-LIST<?else:?>Получить прайс<?endif;?></div>
-        <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send your contact details<?else:?>Отправьте свои контакты и вы получите прайс-лист на почту<?endif;?></div>
+		<div class="center modal-title-one"><?if($ff_popup_is_en): //Локализация?>GET A PRICE-LIST<?else:?>Получить прайс<?endif;?></div>
+        <div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send your contact details<?else:?>Отправьте свои контакты и вы получите прайс-лист на почту<?endif;?></div>
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -126,12 +127,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -145,8 +146,8 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>REQUEST A PHONE CALL<?else:?>Заказать звонок<?endif;?></div>
-        <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
+		<div class="center modal-title-one"><?if($ff_popup_is_en): //Локализация?>REQUEST A PHONE CALL<?else:?>Заказать звонок<?endif;?></div>
+        <div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -161,10 +162,10 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -178,8 +179,8 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>REQUEST A PHONE CALL<?else:?>Оставить заявку<?endif;?></div>
-				<div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
+				<div class="center modal-title-one"><?if($ff_popup_is_en): //Локализация?>REQUEST A PHONE CALL<?else:?>Оставить заявку<?endif;?></div>
+				<div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
 				<br>
 				<div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -194,10 +195,10 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -213,12 +214,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<div class="center modal-title-one">
 			<?php if(1769 == $post->ID) {?>
-				<?if(wpm_get_language() == 'en'): //Локализация?>REQUEST CATALOG<?else:?>ЗАПРОСИТЬ КАТАЛОГ<?endif;?>
+				<?if($ff_popup_is_en): //Локализация?>REQUEST CATALOG<?else:?>ЗАПРОСИТЬ КАТАЛОГ<?endif;?>
 			<? } else { ?>
-				<?if(wpm_get_language() == 'en'): //Локализация?>CALCULATE ORDER<?else:?>РАССЧИТАТЬ ЗАКАЗ<?endif;?>
+				<?if($ff_popup_is_en): //Локализация?>CALCULATE ORDER<?else:?>РАССЧИТАТЬ ЗАКАЗ<?endif;?>
 			<? } ?>
 		</div>
-        <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send your contacts and you will receive a calculation of your order by mail<?else:?>Отправьте свои контакты <br>и вы получите расчёт вашего заказа  на почту<?endif;?></div>
+        <div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send your contacts and you will receive a calculation of your order by mail<?else:?>Отправьте свои контакты <br>и вы получите расчёт вашего заказа  на почту<?endif;?></div>
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -233,12 +234,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -252,8 +253,8 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>REQUEST A PHONE CALL<?else:?>Заказать звонок<?endif;?></div>
-        <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
+		<div class="center modal-title-one"><?if($ff_popup_is_en): //Локализация?>REQUEST A PHONE CALL<?else:?>Заказать звонок<?endif;?></div>
+        <div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send us your details and we will call you back<?else:?>Отправьте свои контакты и мы Вам перезвоним<?endif;?></div>
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -268,10 +269,10 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -285,8 +286,8 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>GET A PRICE-LIST<?else:?>Получить прайс<?endif;?></div>
-        <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send your contact details<?else:?>Отправьте свои контакты<?endif;?></div>
+		<div class="center modal-title-one"><?if($ff_popup_is_en): //Локализация?>GET A PRICE-LIST<?else:?>Получить прайс<?endif;?></div>
+        <div class="center modal-title"><?if($ff_popup_is_en): //Локализация?>Send your contact details<?else:?>Отправьте свои контакты<?endif;?></div>
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
@@ -301,12 +302,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<!-- Honeypot anti-spam field -->
 						<input type="text" name="website" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="info"></textarea></div><div class="clearfix"></div></div>
-						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label><?if($ff_popup_is_en): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="info"></textarea></div><div class="clearfix"></div></div>
+						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_popup_is_en): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if($ff_popup_is_en): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -320,9 +321,9 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class="center modal-title"> <?if(wpm_get_language() == 'en'): //Локализация?>Thanks for the appeal!<?else:?>Спасибо за обращение!<?endif;?></div>
+        <div class="center modal-title"> <?if($ff_popup_is_en): //Локализация?>Thanks for the appeal!<?else:?>Спасибо за обращение!<?endif;?></div>
         <br>
-        <p class="center"><?if(wpm_get_language() == 'en'): //Локализация?>Your application has been successfully submitted!<?else:?>Ваша заявка успешно отправлена!<?endif;?></p>
+        <p class="center"><?if($ff_popup_is_en): //Локализация?>Your application has been successfully submitted!<?else:?>Ваша заявка успешно отправлена!<?endif;?></p>
 	    </div>
 	  </div>
 	</div>
