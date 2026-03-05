@@ -248,4 +248,10 @@ function my_site_custom_languages_selector_template () {
 } // end виджет WP multilang
 
 
-?>
+add_filter('pre_get_document_title', 'usafirefly_document_title');
+function usafirefly_document_title($title) {
+  if (is_front_page() && !is_paged()) {
+    return 'USAfirefly';
+  }
+  return $title;
+}

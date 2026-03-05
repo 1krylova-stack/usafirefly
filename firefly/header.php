@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="og:image" content="https://svetlyachok.info/wp-content/uploads/2017/09/%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8F%D1%87%D0%BE%D0%BA-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%BB%D0%BE%D0%B3%D0%BE-CRV-11.png" />
     <? if(0) { ?>
-	    <title>Светоотражающая продукция оптом и на заказ | Светоотражающие изделия - Светлячок</title>
+	    <title>USAfirefly</title>
     <? } ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -100,8 +100,8 @@
 			<div class="header-content">
 				<div class="logo">
 					<a href="/">
-                        <img src="<?= get_field('logo',7) ?>" alt="Логотип компании Светлячок">
-						<div class="header">Firefly</div>
+                        <img src="<?= get_field('logo',7) ?>" alt="USAfirefly logo">
+						<div class="header">USAfirefly</div>
                     </a>
 				</div>
 
@@ -138,8 +138,8 @@
 		<div class="container">
 			<div class="header-content">
 				<div class="logo">
-					<a href="/"><img src="<?= get_field('logo',7) ?>" alt="Логотип компании Светлячок">
-					<div class="header">Светлячок</div></a>
+					<a href="/"><img src="<?= get_field('logo',7) ?>" alt="USAfirefly logo">
+					<div class="header">USAfirefly</div></a>
 				</div>
 				<?php if ((is_front_page()) and (!is_paged())) : ?>
 					<nav data-anchors>

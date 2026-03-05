@@ -139,7 +139,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						</div>
 						<div class="round-banner-part2">
 							<div class="round-banner-header">2 сек</div>
-							<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
+							<div class="round-banner-text">Only this long<br>to remember the name USAfirefly</div>
 						</div>
 						<div class="round-banner-part3">
 							<div class="round-banner-header">№1</div>
@@ -173,7 +173,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
                             <div class="left">
                                 <?php if(get_field('otziv-logo', $ben)) {?>
-                                    <img src="<?= get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="отзывы о компании <?= get_field('otziv-name', $ben); ?>">
+                                    <img src="<?= get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="USAfirefly review from <?= get_field('otziv-name', $ben); ?>">
                                 <?php } ?>
                                 <div class="text"><?= get_field('otziv-city', $ben); ?></div>
                             </div>
