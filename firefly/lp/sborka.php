@@ -18,25 +18,16 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 		<div class="container">
 			<div class="titile"><?php echo get_field('title',$uid); ?></div>		
 			<div class="stats">					
-				<?php if($is_en):?>		
-				<?php $table = get_field( 'sets_en',$uid ); ?>
-					<?php if ( $table ) {  ?>
-						<?php  foreach ( $table['body'] as $tr ) {  ?>
-							<?php     foreach ( $tr as $td ) {
-								echo '<div class="stat">';
-								echo $td['c'];
-								echo '</div>';  
-						}}}   ?>
-				<?php else: ?>	
-				<?php $table = get_field( 'sets',$uid ); ?>
-					<?php if ( $table ) {  ?>
-						<?php  foreach ( $table['body'] as $tr ) {  ?>
-							<?php     foreach ( $tr as $td ) {
-								echo '<div class="stat">';
-								echo $td['c'];
-								echo '</div>';  
-						}}}   ?>	
-				<?php endif; ?>				
+				<?php $table = get_field($is_en ? 'sets_en' : 'sets', $uid); ?>
+				<?php if (is_array($table) && !empty($table['body']) && is_array($table['body'])) { ?>
+					<?php foreach ($table['body'] as $tr) { ?>
+						<?php if (is_array($tr)) { foreach ($tr as $td) { ?>
+							<?php echo '<div class="stat">'; ?>
+							<?php echo (is_array($td) && isset($td['c'])) ? $td['c'] : ''; ?>
+							<?php echo '</div>'; ?>
+						<?php }} ?>
+					<?php } ?>
+				<?php } ?>
 			</div>
 			<div <?php if($is_en): //Локализация?>id="action-eng"<?php endif; ?> class="action">
 				<!-- <div class="text-action"><?php echo get_field('action',$uid); ?></div> -->
@@ -163,7 +154,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 		<?php $bens = get_field('otzivs', $uid); ?>
 		<div class="otzivs">
 			<div class="owl-carousel owl-otzivs">
-				<?php foreach($bens as $ben) { ?>
+				<?php if (is_array($bens) || $bens instanceof Traversable) { foreach($bens as $ben) { ?>
 					<div class="otziv">
 						<div>
 							<div class="otziv-name"><?php echo get_field('otziv-name', $ben); ?></div>
@@ -188,7 +179,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							<div class="clearfix"></div>
 						</div>
 					</div>
-				<?php } ?>
+				<?php }} ?>
 			</div>
 		</div>
 	</div>
