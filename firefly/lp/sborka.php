@@ -1,63 +1,210 @@
-')):?>
-							<?php preg_match('~\[:'.($is_en ? 'en' : wpm_get_language()).'\](.+?)\[~', $cerf['title'], $matches);print_r($matches[1]); ?>
+<?php $uid = get_the_ID(); ?>
+<?php $is_en = (wpm_get_language() == 'en'); ?>
+<?php
+$ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
+$ff_ts = time();
+$ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
+?>
+
+<section id="banner" >
+
+	<div class="banner" style="background-image:url(<?= get_field('img',$uid); ?>);">	
+		<div class="container">
+			<div class="titile"><?= get_field('title',$uid); ?></div>		
+			<div class="stats">				
+				<?php $table = get_field( 'sets',$uid ); ?>
+					<?php if ( $table ) {  ?>
+						<?php   foreach ( $table['body'] as $tr ) {  ?>
+							<?php      foreach ( $tr as $td ) {
+								echo '<div class="stat">';
+								echo $td['c'];
+								echo '</div>';
+						}}}   ?>
+			</div>
+			<div class="action">
+				<!-- <div class="text-action"><?= get_field('action',$uid); ?></div> -->
+				<div><a href="#" onclick="$(`#get_it [name='reason']`).val('Запрос прайс-листа (верхний баннер)'); return false;" data-toggle="modal" data-target="#get_it" class="y-but get-price">Получить прайс</a></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 
+<section id="link_block" >
+	
+	<div class="container">
+		<div class="titile">Полный ассортимент нашей продукции</div>		
+		<div class="link_block">				
+			<a class="item" href="/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/ ">
+				<span class="image" style="background-image:url(/wp-content/themes/firefly/i/l1.png)"></span>
+				<span class="name">Световозвращающая фурнитура<br>для производителей одежды</span>
+			</a>
+			<a class="item" href="/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/ ">
+				<span class="image" style="background-image:url(/wp-content/themes/firefly/i/gif2.gif)"></span>
+				<span class="name">Каталог<br>световозвращающей продукции</span>
+			</a>
+		</div>
+	</div>
+
+</section> 
+ -->
+
+
+
+<section id="products">
+	<div class="container">
+		<h2 class="center"><?= get_field('prod-title',$uid); ?></h2>
+		<div class="at-mar">
+			<div class="owl-carousel owl-products">			
+			<? $bens = get_field('products', $uid); ?>
+			<? foreach($bens as $k => $ben) { ?>			
+				<div class="prod prod-<?= $ben; ?> <?= ($k == 0)? 'active' : ''; ?>">
+					<span>&nbsp;</span>
+					<div class="himg"><!-- <img src=""> --><?
+					$image = get_field('slide-img', $ben);
+$size = 'img_slider'; // (thumbnail, medium, large, full or custom size)
+if( $image ) {
+    echo wp_get_attachment_image( $image, $size );
+}?></div>
+					<h3 class="center hh3"><?= get_field('name', $ben); ?></h3>
+				</div>				
+			<? } ?>	
+			</div>
+		</div>
+		<div class="at-bars">
+		<? $bens = get_field('products', $uid); ?>
+		<? foreach($bens as $k => $ben) { ?>	
+			<div class="at-bar at-bar-<?= $ben; ?> <?= ($k == 0)? 'at-vis' : ''; ?>">
+				<div class="left-60 center">
+					<? $video = get_field('video', $ben); ?>
+					<? if($video) { ?>
+					<div class="iframe-wrapper main-img">
+						<iframe style="width: 100%"; src="https://www.youtube.com/embed/<?= $video; ?>" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<br>
+					<? } else { ?>
+					<img class="main-img mx-auto img-responsive" src="<?= get_field('main-img', $ben); ?>" />
+					<? } ?>
+					<div class="img-line">
+						<div class="row">
+							<div class="col-3"><img class="img-responsive" src="<?= get_field('img1', $ben); ?>" /></div>
+							<div class="col-3"><img class="img-responsive" src="<?= get_field('img2', $ben); ?>" /></div>
+							<div class="col-3"><img class="img-responsive" src="<?= get_field('img3', $ben); ?>" /></div>
+							<div class="col-3"><img class="img-responsive" src="<?= get_field('img4', $ben); ?>" /></div>
+						</div>
+					</div>
+				</div>
+				<div class="right-40">
+					<div class="left-line"><h2><?= get_field('title', $ben); ?></h2></div>
+					<div class="text"><?= get_field('text', $ben); ?></div>
+					<br/>
+					<div class="y-div"><a href="#" onclick="$(`#zvonok [name='reason']`).val('Прайс для <?= get_field('name', $ben); ?>'); return false;" data-toggle="modal" data-target="#zvonok" class="y-but get-price">Получить прайс</a></div>
+					<div class="at-line">
+						<div class="at3">
+							<img src="<?= get_field('at1-icon', $ben); ?>">
+							<div class="at-desc"><?= get_field('at1-text', $ben); ?></div>
+						</div>
+						<div class="at3">
+							<img src="<?= get_field('at2-icon', $ben); ?>">
+							<div class="at-desc"><?= get_field('at2-text', $ben); ?></div>
+						</div>
+						<div class="at3">
+							<img src="<?= get_field('at3-icon', $ben); ?>">
+							<div class="at-desc"><?= get_field('at3-text', $ben); ?></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<script>
+				$(document).ready(function(){
+					$(".prod-<?= $ben; ?>").click(function(){
+						$(".at-bar").removeClass("at-vis");
+						$(".at-bar-<?= $ben; ?>").addClass("at-vis");
+						$(".prod").removeClass("active");
+						$(".prod-<?= $ben; ?>").addClass("active");				
+					});
+				});
+			</script>			
+		<? } ?>	
+		</div>
+	</div>
+	<div class="clearfix"></div>	
+</section>
+
+<section id="about">
+	<div class="container">
+		<div class="left-line"><h2><?= get_field('about-title', $uid); ?></h2></div>
+		<div class="left-60">
+			<div class="text"><?= get_field('about-text', $uid); ?></div>
+			<div class="a-ats">
+				<div class="a-at"><img src="<?= get_field('at-icon', $uid); ?>"><p><?= get_field('at-text', $uid); ?></p></div>
+				<div class="a-at"><img src="<?= get_field('at2-icon', $uid); ?>"><p><?= get_field('at2-text', $uid); ?></p></div>
+				<div class="a-at"><img src="<?= get_field('at3-icon', $uid); ?>"><p><?= get_field('at3-text', $uid); ?></p></div>
+			</div>
+			<div>
+				<?php if(function_exists('acf_photo_gallery')): ?>
+					<?php foreach(acf_photo_gallery('cerf', get_the_ID()) as $cerf) { ?>
+						<a class="attachment_href" target="_blank" href="<?= $cerf['full_image_url']; ?>">
+							<?php if(strstr($cerf['title'], '[:')):?>
+								<?php preg_match('~\[:'.($is_en ? 'en' : wpm_get_language()).'\](.+?)\[~', $cerf['title'], $matches); echo !empty($matches[1]) ? $matches[1] : $cerf['title']; ?>
 							<?php else: ?>
-							<?= $cerf['title']?>
+								<?= $cerf['title']?>
 							<?php endif; ?>
 						</a>
-						<?php } ?>
-						<?php endif; ?>
-					</div>
-				<?php } ?>
+					<?php } ?>
+				<?php endif; ?>
 			</div>
-			<?php if($is_en): //Локализация?>
-				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
-					<div class="round-banner">
-						<div class="round-banner-part1">
-							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text">Product SKUs</div>
-						</div>
-						<div class="round-banner-part2">
-							<div class="round-banner-header">2 Seconds</div>
-							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
-						</div>
-						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">In Customer Understanding</div>
-						</div>
-						<div class="round-banner-part4">
-							<div class="round-banner-header">100%</div>
-							<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
-						</div>
-					</div>
-				</div>
-			<?php else: ?>
-				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
-					<div class="director-photo">
-						<img src="<?php bloginfo('template_url')?>/imgs/dir_photo.jpg" alt="">
-					</div>
-					<div class="round-banner">
-						<div class="round-banner-part1">
-							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text"> <br>Наименований<br>продукции</div>
-						</div>
-						<div class="round-banner-part2">
-							<div class="round-banner-header">2 сек</div>
-							<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
-						</div>
-						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">В РФ по уровню<br>дружелюбия</div>
-						</div>
-						<div class="round-banner-part4">
-							<div class="round-banner-header"><img src="<?php bloginfo('template_url')?>/imgs/100.png" alt=""></div>
-							<div class="round-banner-text">Нам самим нравится то,<br>что мы производим</div>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
 		</div>
+		<?php if($is_en): //Локализация?>
+			<div class="right-40">
+				<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+				<div class="round-banner">
+					<div class="round-banner-part1">
+						<div class="round-banner-header">500+</div>
+						<div class="round-banner-text">Product SKUs</div>
+					</div>
+					<div class="round-banner-part2">
+						<div class="round-banner-header">2 Seconds</div>
+						<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
+					</div>
+					<div class="round-banner-part3">
+						<div class="round-banner-header">№1</div>
+						<div class="round-banner-text">In Customer Understanding</div>
+					</div>
+					<div class="round-banner-part4">
+						<div class="round-banner-header">100%</div>
+						<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
+					</div>
+				</div>
+			</div>
+		<?php else: ?>
+			<div class="right-40">
+				<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+				<div class="director-photo">
+					<img src="<?php bloginfo('template_url')?>/imgs/dir_photo.jpg" alt="">
+				</div>
+				<div class="round-banner">
+					<div class="round-banner-part1">
+						<div class="round-banner-header">500+</div>
+						<div class="round-banner-text"> <br>Наименований<br>продукции</div>
+					</div>
+					<div class="round-banner-part2">
+						<div class="round-banner-header">2 сек</div>
+						<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
+					</div>
+					<div class="round-banner-part3">
+						<div class="round-banner-header">№1</div>
+						<div class="round-banner-text">В РФ по уровню<br>дружелюбия</div>
+					</div>
+					<div class="round-banner-part4">
+						<div class="round-banner-header"><img src="<?php bloginfo('template_url')?>/imgs/100.png" alt=""></div>
+						<div class="round-banner-text">Нам самим нравится то,<br>что мы производим</div>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 	<div class="clearfix"></div>	
 </section>
