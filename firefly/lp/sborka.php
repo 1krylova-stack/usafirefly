@@ -1,67 +1,11 @@
-')):?>
-							<?php preg_match('~\[:'.($is_en ? 'en' : wpm_get_language()).'\](.+?)\[~', $cerf['title'], $matches);print_r($matches[1]); ?>
-							<?php else: ?>
-							<?= $cerf['title']?>
-							<?php endif; ?>
-						</a>
-						<?php } ?>
-						<?php endif; ?>
-					</div>
-				<?php } ?>
-			</div>
-			<?php if($is_en): //Локализация?>
-				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
-					<div class="round-banner">
-						<div class="round-banner-part1">
-							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text">Product SKUs</div>
-						</div>
-						<div class="round-banner-part2">
-							<div class="round-banner-header">2 Seconds</div>
-							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
-						</div>
-						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">In Customer Understanding</div>
-						</div>
-						<div class="round-banner-part4">
-							<div class="round-banner-header">100%</div>
-							<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
-						</div>
-					</div>
-				</div>
-			<?php else: ?>
-				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
-					<div class="director-photo">
-						<img src="<?php bloginfo('template_url')?>/imgs/dir_photo.jpg" alt="">
-					</div>
-					<div class="round-banner">
-						<div class="round-banner-part1">
-							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text"> <br>Наименований<br>продукции</div>
-						</div>
-						<div class="round-banner-part2">
-							<div class="round-banner-header">2 сек</div>
-							<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
-						</div>
-						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">В РФ по уровню<br>дружелюбия</div>
-						</div>
-						<div class="round-banner-part4">
-							<div class="round-banner-header"><img src="<?php bloginfo('template_url')?>/imgs/100.png" alt=""></div>
-							<div class="round-banner-text">Нам самим нравится то,<br>что мы производим</div>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
-		</div>
-	</div>
-	<div class="clearfix"></div>	
-</section>
-
+<?php $uid = get_the_ID(); ?>
+<?php $is_en = (wpm_get_language() == 'en'); ?>
+<?php
+$ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
+$ff_ts = time();
+$ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
+?>
 <section id="otzivi">
 	<div class="container">
 		<div class="def-title center"><h2><?= get_field('otziv-title', $uid); ?></h2></div>
