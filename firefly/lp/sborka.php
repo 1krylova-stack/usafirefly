@@ -14,9 +14,9 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="banner" >
 
-	<div class="banner" style="background-image:url(<?= get_field('img',$uid); ?>);">
+	<div class="banner" style="background-image:url(<?php echo get_field('img',$uid); ?>);">
 		<div class="container">
-			<div class="titile"><?= get_field('title',$uid); ?></div>		
+			<div class="titile"><?php echo get_field('title',$uid); ?></div>		
 			<div class="stats">					
 				<?php if($is_en):?>		
 				<?php $table = get_field( 'sets_en',$uid ); ?>
@@ -39,7 +39,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 				<?php endif; ?>				
 			</div>
 			<div <?php if($is_en): //Локализация?>id="action-eng"<?php endif; ?> class="action">
-				<!-- <div class="text-action"><?= get_field('action',$uid); ?></div> -->
+				<!-- <div class="text-action"><?php echo get_field('action',$uid); ?></div> -->
 				<div><a href="#" onclick="$(`#get_it [name='reason']`).val('Запрос прайс-листа (верхний баннер)'); return false;" data-toggle="modal" data-target="#get_it" class="y-but get-price"><?php if($is_en):?>GET A PRICE-LIST<?php else: ?>Получить прайс<?php endif; ?></a></div>
 			</div>
 		</div>
@@ -80,23 +80,23 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	<div class="container">
 		<div class="about-content">
 			<div class="left-60">
-				<div class="left-line"><h2><?= get_field('about-title', $uid); ?></h2></div>
-				<div class="text"><?= get_field('about-text', $uid); ?></div>
+				<div class="left-line"><h2><?php echo get_field('about-title', $uid); ?></h2></div>
+				<div class="text"><?php echo get_field('about-text', $uid); ?></div>
 				<?php if(0) {?>
 					<div class="a-ats">
-						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at-icon', $uid); ?>"><p><?= get_field('at-text', $uid); ?></p></div>
-						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at2-icon', $uid); ?>"><p><?= get_field('at2-text', $uid); ?></p></div>
-						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at3-icon', $uid); ?>"><p><?= get_field('at3-text', $uid); ?></p></div>
+						<div class="a-at"><img class="lazy_loading" data-src="<?php echo get_field('at-icon', $uid); ?>"><p><?php echo get_field('at-text', $uid); ?></p></div>
+						<div class="a-at"><img class="lazy_loading" data-src="<?php echo get_field('at2-icon', $uid); ?>"><p><?php echo get_field('at2-text', $uid); ?></p></div>
+						<div class="a-at"><img class="lazy_loading" data-src="<?php echo get_field('at3-icon', $uid); ?>"><p><?php echo get_field('at3-text', $uid); ?></p></div>
 					</div>
 					<div>
 						<?php if($is_en): //Локализация?>
 						<?php else: ?>
 						<?php foreach(acf_photo_gallery('cerf', get_the_ID()) as $cerf) { ?>
-						<a class="attachment_href" target="_blank" href="<?= $cerf['full_image_url']; ?>">
+						<a class="attachment_href" target="_blank" href="<?php echo $cerf['full_image_url']; ?>">
 							<?php if(stristr($cerf['title'], '[:ru]')):?>
 							<?php preg_match('~\[:'.($is_en ? 'en' : wpm_get_language()).'\](.+?)\[~', $cerf['title'], $matches);print_r($matches[1]); ?>
 							<?php else: ?>
-							<?= $cerf['title']?>
+							<?php echo $cerf['title']; ?>
 							<?php endif; ?>
 						</a>
 						<?php } ?>
@@ -106,7 +106,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 			</div>
 			<?php if($is_en): //Локализация?>
 				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+					<!--div class="info-img center"><img src="<?php echo get_field('info-img', $uid); ?>" ></div-->
 					<div class="round-banner">
 						<div class="round-banner-part1">
 							<div class="round-banner-header">100+</div>
@@ -128,7 +128,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 				</div>
 			<?php else: ?>
 				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+					<!--div class="info-img center"><img src="<?php echo get_field('info-img', $uid); ?>" ></div-->
 					<div class="director-photo">
 						<img src="<?php bloginfo('template_url')?>/imgs/dir_photo.jpg" alt="">
 					</div>
@@ -159,31 +159,31 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="otzivi">
 	<div class="container">
-		<div class="def-title center"><h2><?= get_field('otziv-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('otziv-title', $uid); ?></h2></div>
 		<?php $bens = get_field('otzivs', $uid); ?>
 		<div class="otzivs">
 			<div class="owl-carousel owl-otzivs">
 				<?php foreach($bens as $ben) { ?>
 					<div class="otziv">
 						<div>
-							<div class="otziv-name"><?= get_field('otziv-name', $ben); ?></div>
-							<div class="otziv-text text"><?= get_field('otziv-text', $ben); ?></div>
+							<div class="otziv-name"><?php echo get_field('otziv-name', $ben); ?></div>
+							<div class="otziv-text text"><?php echo get_field('otziv-text', $ben); ?></div>
 						</div>
 						<div class="otziv-meta">
 
                             <div class="left">
                                 <?php if(get_field('otziv-logo', $ben)) {?>
-                                    <img src="<?= get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="USAfirefly review from <?= get_field('otziv-name', $ben); ?>">
+                                    <img src="<?php echo get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="USAfirefly review from <?php echo get_field('otziv-name', $ben); ?>">
                                 <?php } ?>
-                                <div class="text"><?= get_field('otziv-city', $ben); ?></div>
+                                <div class="text"><?php echo get_field('otziv-city', $ben); ?></div>
                             </div>
 
 							<div class="right">
 								<?php if(get_field('otziv-phone', $ben)) {?>
-									<p class="text text-right"><span>Phone:</span>  <?= get_field('otziv-phone', $ben); ?></p>
+									<p class="text text-right"><span>Phone:</span>  <?php echo get_field('otziv-phone', $ben); ?></p>
 								<?php } ?>
-								<p class="text text-right">  <?= get_field('otziv-spec', $ben); ?></p>
-								<p class="text text-right">  <?= get_field('otziv-fio', $ben); ?></p>
+								<p class="text text-right">  <?php echo get_field('otziv-spec', $ben); ?></p>
+								<p class="text text-right">  <?php echo get_field('otziv-fio', $ben); ?></p>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -197,27 +197,27 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="shema">
 	<div class="container center">
-		<div class="def-title center"><h2><?= get_field('shema-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('shema-title', $uid); ?></h2></div>
 		<div class="shema-line">
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema1-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema1-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema1-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema1-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema2-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema2-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema2-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema2-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema3-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema3-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema3-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema3-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema4-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema4-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema4-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema4-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema5-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema5-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema5-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema5-text', $uid); ?></p>
 			</div>
 		</div>
 		<div class="schema-button">
@@ -228,13 +228,13 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="quality">
 	<div class="container">
-		<div class="def-title center"><h2><?= get_field('quality-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('quality-title', $uid); ?></h2></div>
 		<div class="quality-content">
 			<div class="quality__img">
-				<img src="<?= get_field('quality-img', $uid); ?>" alt="">
+				<img src="<?php echo get_field('quality-img', $uid); ?>" alt="">
 			</div>
 			<div class="quality__text">
-				<?= get_field('quality-text', $uid); ?>
+				<?php echo get_field('quality-text', $uid); ?>
 			</div>
 		</div>
 	</div>
@@ -242,7 +242,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <?php if($is_en): //Локализация?>
 <section id="skid">
-	<div class="bg" <?php if(0) { ?>style="background-image:url(<?= get_field('skid-img',$uid); ?>);"<?php } ?>>
+	<div class="bg" <?php if(0) { ?>style="background-image:url(<?php echo get_field('skid-img',$uid); ?>);"<?php } ?>>
 		<div class="container">
 			<div class="left-line"><h2>Delivery to any place in the World</h2></div>
 		</div>
@@ -250,12 +250,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 </section>
 <?php else: ?>
 <section id="skid">
-	<div class="bg" <?php if(0) { ?>style="background-image:url(<?= get_field('skid-img',$uid); ?>);"<?php } ?>>
+	<div class="bg" <?php if(0) { ?>style="background-image:url(<?php echo get_field('skid-img',$uid); ?>);"<?php } ?>>
 		<div class="container">
-			<div class="left-line"><h2><?= get_field('skid-title', $uid); ?></h2></div>
+			<div class="left-line"><h2><?php echo get_field('skid-title', $uid); ?></h2></div>
 			<div class="skid-content">
 				<div class="skid-wrap">
-					<div class="text"><?= get_field('skid-verh', $uid); ?></div>
+					<div class="text"><?php echo get_field('skid-verh', $uid); ?></div>
 					<div class="skid-table">
 					<table>
 					<?php $table = get_field( 'skid-table',$uid ); ?>
@@ -270,7 +270,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							} echo '</tr>'; }}   ?>
 					</table>
 				</div>
-					<div class="text"><?= get_field('skid-nix', $uid); ?></div>
+					<div class="text"><?php echo get_field('skid-nix', $uid); ?></div>
 				</div>
 				<div class="y-div">
 					<div class="cargo-img">
@@ -287,7 +287,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 <section id="contacts">
 	<div class="map">
 		<div id="mapHolder">
-	<?= ""//get_field('map', $uid); ?>
+	<?php echo ""; //get_field('map', $uid); ?>
 		</div>
 		<div id="mapHolderMobile">
 		</div>
@@ -299,11 +299,11 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							<form method="POST" action="/mail.php" data-with-ajax="">
 								<input type="hidden" name="form_type" value="question">
 								<input type="hidden" name="reason" value="Задать вопрос (форма в подвале)">
-								<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
+								<input type="hidden" name="referrer" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
 
 								<!-- Signed anti-spam token -->
-								<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
-								<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
+								<input type="hidden" name="ff_ts" value="<?php echo $ff_ts; ?>">
+								<input type="hidden" name="ff_token" value="<?php echo $ff_token; ?>">
 
 								<!-- Honeypot anti-spam field -->
 								<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
