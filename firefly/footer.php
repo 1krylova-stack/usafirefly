@@ -399,8 +399,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                 }
                 window.googleMapDidInit = true;
 
+                const mapQuery = encodeURIComponent('1221 Drew Street, Clearwater, Florida 33755');
+                const desktopMapSrc = 'https://maps.google.com/maps?hl=en&q=' + mapQuery + '&t=&z=15&ie=UTF8&iwloc=B&ll=27.9665,-82.8040&output=embed';
+                const mobileMapSrc = 'https://maps.google.com/maps?hl=en&q=' + mapQuery + '&t=&z=15&ie=UTF8&iwloc=B&output=embed';
+
                 const desktopIframe = document.createElement('iframe');
-                desktopIframe.src = 'https://www.google.com/maps?q=1221+Drew+Street,+Clearwater,+Florida+33755&output=embed';
+                desktopIframe.src = desktopMapSrc;
                 desktopIframe.width = '100%';
                 desktopIframe.height = '620';
                 desktopIframe.style.border = '0';
@@ -415,7 +419,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                 }
 
                 const mobileIframe = document.createElement('iframe');
-                mobileIframe.src = 'https://www.google.com/maps?q=1221+Drew+Street,+Clearwater,+Florida+33755&output=embed';
+                mobileIframe.src = mobileMapSrc;
                 mobileIframe.width = '100%';
                 mobileIframe.height = '400';
                 mobileIframe.style.border = '0';
