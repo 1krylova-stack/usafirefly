@@ -1,7 +1,7 @@
 ')):?>
 							<?php preg_match('~\[:'.($is_en ? 'en' : wpm_get_language()).'\](.+?)\[~', $cerf['title'], $matches);print_r($matches[1]); ?>
 							<?php else: ?>
-							<?= $cerf['title']?>
+							<?php echo $cerf['title']; ?>
 							<?php endif; ?>
 						</a>
 						<?php } ?>
@@ -11,29 +11,29 @@
 			</div>
 			<?php if($is_en): //Локализация?>
 				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+					<!--div class="info-img center"><img src="<?php echo get_field('info-img', $uid); ?>" ></div-->
 					<div class="round-banner">
 						<div class="round-banner-part1">
-							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text">Product SKUs</div>
+							<div class="round-banner-header">100+</div>
+							<div class="round-banner-text">Types of<br>product</div>
 						</div>
 						<div class="round-banner-part2">
-							<div class="round-banner-header">2 Seconds</div>
-							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
+							<div class="round-banner-header">24 h</div>
+							<div class="round-banner-text">Maximum<br>delivery time</div>
 						</div>
 						<div class="round-banner-part3">
 							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">In Customer Understanding</div>
+							<div class="round-banner-text">In Russia and the CIS <br>by range</div>
 						</div>
 						<div class="round-banner-part4">
-							<div class="round-banner-header">100%</div>
-							<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
+							<div class="round-banner-header">5%</div>
+							<div class="round-banner-text">Discount for an order<br>of more than 50,000 rub.</div>
 						</div>
 					</div>
 				</div>
 			<?php else: ?>
 				<div class="right-40">
-					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
+					<!--div class="info-img center"><img src="<?php echo get_field('info-img', $uid); ?>" ></div-->
 					<div class="director-photo">
 						<img src="<?php bloginfo('template_url')?>/imgs/dir_photo.jpg" alt="">
 					</div>
@@ -44,7 +44,7 @@
 						</div>
 						<div class="round-banner-part2">
 							<div class="round-banner-header">2 сек</div>
-							<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
+							<div class="round-banner-text">Only this long<br>to remember the name USAfirefly</div>
 						</div>
 						<div class="round-banner-part3">
 							<div class="round-banner-header">№1</div>
@@ -64,36 +64,36 @@
 
 <section id="otzivi">
 	<div class="container">
-		<div class="def-title center"><h2><?= get_field('otziv-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('otziv-title', $uid); ?></h2></div>
 		<?php $bens = get_field('otzivs', $uid); ?>
 		<div class="otzivs">
 			<div class="owl-carousel owl-otzivs">
-				<?php foreach($bens as $ben) { ?>
+				<?php if (is_array($bens) || $bens instanceof Traversable) { foreach($bens as $ben) { ?>
 					<div class="otziv">
 						<div>
-							<div class="otziv-name"><?= get_field('otziv-name', $ben); ?></div>
-							<div class="otziv-text text"><?= get_field('otziv-text', $ben); ?></div>
+							<div class="otziv-name"><?php echo get_field('otziv-name', $ben); ?></div>
+							<div class="otziv-text text"><?php echo get_field('otziv-text', $ben); ?></div>
 						</div>
 						<div class="otziv-meta">
 
                             <div class="left">
                                 <?php if(get_field('otziv-logo', $ben)) {?>
-                                    <img src="<?= get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="отзывы о компании <?= get_field('otziv-name', $ben); ?>">
+                                    <img src="<?php echo get_field('otziv-logo', $ben); ?>" data-nopreview="true" alt="USAfirefly review from <?php echo get_field('otziv-name', $ben); ?>">
                                 <?php } ?>
-                                <div class="text"><?= get_field('otziv-city', $ben); ?></div>
+                                <div class="text"><?php echo get_field('otziv-city', $ben); ?></div>
                             </div>
 
 							<div class="right">
 								<?php if(get_field('otziv-phone', $ben)) {?>
-									<p class="text text-right"><span>Phone:</span>  <?= get_field('otziv-phone', $ben); ?></p>
+									<p class="text text-right"><span>Phone:</span>  <?php echo get_field('otziv-phone', $ben); ?></p>
 								<?php } ?>
-								<p class="text text-right">  <?= get_field('otziv-spec', $ben); ?></p>
-								<p class="text text-right">  <?= get_field('otziv-fio', $ben); ?></p>
+								<p class="text text-right">  <?php echo get_field('otziv-spec', $ben); ?></p>
+								<p class="text text-right">  <?php echo get_field('otziv-fio', $ben); ?></p>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 					</div>
-				<?php } ?>
+				<?php }} ?>
 			</div>
 		</div>
 	</div>
@@ -102,44 +102,44 @@
 
 <section id="shema">
 	<div class="container center">
-		<div class="def-title center"><h2><?= get_field('shema-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('shema-title', $uid); ?></h2></div>
 		<div class="shema-line">
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema1-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema1-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema1-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema1-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema2-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema2-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema2-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema2-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema3-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema3-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema3-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema3-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema4-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema4-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema4-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema4-text', $uid); ?></p>
 			</div>
 			<div class="shema-block">
-				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?= get_field('shema5-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
-				<p><?= get_field('shema5-text', $uid); ?></p>
+				<img class="lazy_loading" src="<?php bloginfo('template_url')?>/imgs/lazy-holder.png" data-src="<?php echo get_field('shema5-img', $uid); ?>" alt="Как получить заказ. Иконка 1">
+				<p><?php echo get_field('shema5-text', $uid); ?></p>
 			</div>
 		</div>
 		<div class="schema-button">
-			<a href="#" onclick="return false;" data-toggle="modal" data-target="#order-popup" class="y-but call-but">Оставить заявку</a>
+			<a href="#" onclick="return false;" data-toggle="modal" data-target="#order-popup" class="y-but call-but">Submit a Request</a>
 		</div>
 	</div>
 </section>
 
 <section id="quality">
 	<div class="container">
-		<div class="def-title center"><h2><?= get_field('quality-title', $uid); ?></h2></div>
+		<div class="def-title center"><h2><?php echo get_field('quality-title', $uid); ?></h2></div>
 		<div class="quality-content">
 			<div class="quality__img">
-				<img src="<?= get_field('quality-img', $uid); ?>" alt="">
+				<img src="<?php echo get_field('quality-img', $uid); ?>" alt="">
 			</div>
 			<div class="quality__text">
-				<?= get_field('quality-text', $uid); ?>
+				<?php echo get_field('quality-text', $uid); ?>
 			</div>
 		</div>
 	</div>
@@ -147,7 +147,7 @@
 
 <?php if($is_en): //Локализация?>
 <section id="skid">
-	<div class="bg" <?php if(0) { ?>style="background-image:url(<?= get_field('skid-img',$uid); ?>);"<?php } ?>>
+	<div class="bg" <?php if(0) { ?>style="background-image:url(<?php echo get_field('skid-img',$uid); ?>);"<?php } ?>>
 		<div class="container">
 			<div class="left-line"><h2>Delivery to any place in the World</h2></div>
 		</div>
@@ -155,12 +155,12 @@
 </section>
 <?php else: ?>
 <section id="skid">
-	<div class="bg" <?php if(0) { ?>style="background-image:url(<?= get_field('skid-img',$uid); ?>);"<?php } ?>>
+	<div class="bg" <?php if(0) { ?>style="background-image:url(<?php echo get_field('skid-img',$uid); ?>);"<?php } ?>>
 		<div class="container">
-			<div class="left-line"><h2><?= get_field('skid-title', $uid); ?></h2></div>
+			<div class="left-line"><h2><?php echo get_field('skid-title', $uid); ?></h2></div>
 			<div class="skid-content">
 				<div class="skid-wrap">
-					<div class="text"><?= get_field('skid-verh', $uid); ?></div>
+					<div class="text"><?php echo get_field('skid-verh', $uid); ?></div>
 					<div class="skid-table">
 					<table>
 					<?php $table = get_field( 'skid-table',$uid ); ?>
@@ -175,7 +175,7 @@
 							} echo '</tr>'; }}   ?>
 					</table>
 				</div>
-					<div class="text"><?= get_field('skid-nix', $uid); ?></div>
+					<div class="text"><?php echo get_field('skid-nix', $uid); ?></div>
 				</div>
 				<div class="y-div">
 					<div class="cargo-img">
@@ -192,7 +192,7 @@
 <section id="contacts">
 	<div class="map">
 		<div id="mapHolder">
-	<?= ""//get_field('map', $uid); ?>
+	<?php echo ""; //get_field('map', $uid); ?>
 		</div>
 		<div id="mapHolderMobile">
 		</div>
@@ -204,11 +204,11 @@
 							<form method="POST" action="/mail.php" data-with-ajax="">
 								<input type="hidden" name="form_type" value="question">
 								<input type="hidden" name="reason" value="Задать вопрос (форма в подвале)">
-								<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
+								<input type="hidden" name="referrer" value="<?php echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
 
 								<!-- Signed anti-spam token -->
-								<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
-								<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
+								<input type="hidden" name="ff_ts" value="<?php echo $ff_ts; ?>">
+								<input type="hidden" name="ff_token" value="<?php echo $ff_token; ?>">
 
 								<!-- Honeypot anti-spam field -->
 								<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
