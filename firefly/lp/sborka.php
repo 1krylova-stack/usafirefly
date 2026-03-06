@@ -42,7 +42,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 			</div>
 			<div <?if(wpm_get_language() == 'en'): //Локализация?>id="action-eng"<?endif;?> class="action">
 				<!-- <div class="text-action"><?= get_field('action',$uid); ?></div> -->
-				<div><a href="#" onclick="$(`#get_it [name='reason']`).val('Запрос прайс-листа (верхний баннер)'); return false;" data-toggle="modal" data-target="#get_it" class="y-but get-price"><?if(wpm_get_language() == 'en'):?>GET A PRICE-LIST<?else:?>Получить прайс<?endif;?></a></div>
+				<div><a href="#" onclick="$(`#get_it [name='reason']`).val('Запрос прайс-листа (верхний баннер)'); return false;" data-toggle="modal" data-target="#get_it" class="y-but get-price"><?if(wpm_get_language() == 'en'):?>GET A PRICE-LIST<?else:?>Request a Price List<?endif;?></a></div>
 			</div>
 		</div>
 	</div>
@@ -119,7 +119,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							<div class="round-banner-text">Maximum<br>delivery time</div>
 						</div>
 						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
+							<div class="round-banner-header">#1</div>
 							<div class="round-banner-text">In Russia and the CIS <br>by range</div>
 						</div>
 						<div class="round-banner-part4">
@@ -137,19 +137,19 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 					<div class="round-banner">
 						<div class="round-banner-part1">
 							<div class="round-banner-header">500+</div>
-							<div class="round-banner-text">&nbsp;<br>Наименований<br>продукции</div>
+							<div class="round-banner-text">Product SKUs</div>
 						</div>
 						<div class="round-banner-part2">
-							<div class="round-banner-header">2 сек</div>
-							<div class="round-banner-text">Столько нужно<br>чтобы запомнить наше название Светлячок</div>
+							<div class="round-banner-header">2 Seconds</div>
+							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
 						</div>
 						<div class="round-banner-part3">
-							<div class="round-banner-header">№1</div>
-							<div class="round-banner-text">В РФ по уровню<br>дружелюбия</div>
+							<div class="round-banner-header">#1</div>
+							<div class="round-banner-text">In <br>Customer Understanding</div>
 						</div>
 						<div class="round-banner-part4">
-							<div class="round-banner-header"><img src="<?bloginfo('template_url')?>/imgs/100.png" alt=""></div>
-							<div class="round-banner-text">Нам самим нравится то,<br>что мы производим</div>
+							<div class="round-banner-header">100%</div>
+							<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
 						</div>
 					</div>
 				</div>
@@ -165,7 +165,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 		<? $bens = get_field('otzivs', $uid); ?>
 		<div class="otzivs">
 			<div class="owl-carousel owl-otzivs">
-				<? foreach($bens as $ben) { ?>
+				<?php if (is_array($bens) || $bens instanceof Traversable) { foreach($bens as $ben) { ?>
 					<div class="otziv">
 						<div>
 							<div class="otziv-name"><?= get_field('otziv-name', $ben); ?></div>
@@ -190,7 +190,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							<div class="clearfix"></div>
 						</div>
 					</div>
-				<? } ?>
+				<?php }} ?>
 			</div>
 		</div>
 	</div>
@@ -223,7 +223,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 			</div>
 		</div>
 		<div class="schema-button">
-			<a href="#" onclick="return false;" data-toggle="modal" data-target="#order-popup" class="y-but call-but">Оставить заявку</a>
+			<a href="#" onclick="return false;" data-toggle="modal" data-target="#order-popup" class="y-but call-but">Submit a Request</a>
 		</div>
 	</div>
 </section>
@@ -278,7 +278,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 					<div class="cargo-img">
 						<img src="<? bloginfo('template_url')?>/imgs/cargo.gif" alt="">
 					</div>
-					<a href="#" onclick="$(`#zvonok [name='reason']`).val('Получить прайс лист (блок скидки и доставка)'); return false;" data-toggle="modal" data-target="#zvonok" class="y-but action-but">Получить прайс-лист</a>
+					<a href="#" onclick="$(`#zvonok [name='reason']`).val('Получить прайс лист (блок скидки и доставка)'); return false;" data-toggle="modal" data-target="#zvonok" class="y-but action-but">Request a Price List</a>
 				</div>
 			</div>
 		</div>
