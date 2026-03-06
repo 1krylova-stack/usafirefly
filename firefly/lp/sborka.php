@@ -117,11 +117,11 @@ $ff_is_en = true;
 						</div>
 						<div class="round-banner-part2">
 							<div class="round-banner-header">2 Seconds</div>
-							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
+							<div class="round-banner-text">That’s all it takes<br>to remember the name <br>USA Firefly</div>
 						</div>
 						<div class="round-banner-part3">
 							<div class="round-banner-header">#1</div>
-							<div class="round-banner-text">In Customer <br>Understanding</div>
+							<div class="round-banner-text">In <br>Customer <br>Understanding</div>
 						</div>
 						<div class="round-banner-part4">
 							<div class="round-banner-header">100%</div>
@@ -142,15 +142,15 @@ $ff_is_en = true;
 						</div>
 						<div class="round-banner-part2">
 							<div class="round-banner-header">2 Seconds</div>
-							<div class="round-banner-text">That’s all it takes<br>to remember the name USA Firefly</div>
+							<div class="round-banner-text">That’s all it takes<br>to remember the name <br>USA Firefly</div>
 						</div>
 						<div class="round-banner-part3">
 							<div class="round-banner-header">#1</div>
-							<div class="round-banner-text">In <br>Customer Understanding</div>
+							<div class="round-banner-text">In <br>Customer <br>Understanding</div>
 						</div>
 						<div class="round-banner-part4">
 							<div class="round-banner-header">100%</div>
-							<div class="round-banner-text">We genuinely stand behind<br>the products we manufacture</div>
+							<div class="round-banner-text">We genuinely stand<br> behind the products<br> we manufacture</div>
 						</div>
 					</div>
 				</div>
