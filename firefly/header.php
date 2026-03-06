@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="og:image" content="https://svetlyachok.info/wp-content/uploads/2017/09/%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D1%8F%D1%87%D0%BE%D0%BA-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%BB%D0%BE%D0%B3%D0%BE-CRV-11.png" />
     <? if(0) { ?>
-	    <title>Светоотражающая продукция оптом и на заказ | Светоотражающие изделия - Светлячок</title>
+	    <title>Reflective products in bulk and on order | Reflective products - USA Firefly</title>
     <? } ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -73,21 +73,21 @@
 		<?php if ((is_front_page()) and (!is_paged())) : ?>
 			<nav data-anchors>
 				<ul>
-					<li><a href="#link_block">Продукция</a></li>
-					<li><a href="#quality">Качество</a></li>
-					<li><a href="#shema">Как получить заказ?</a></li>
-					<li><a href="#skid">Скидки</a></li>
-					<li><a href="#contacts">Контакты</a></li>
+					<li><a href="#link_block">Product</a></li>
+					<li><a href="#quality">Quality</a></li>
+					<li><a href="#shema">How to receive your order</a></li>
+					<li><a href="#skid">Discounts</a></li>
+					<li><a href="#contacts">Contact details</a></li>
 				</ul>
 			</nav>
 		<?php else : ?>
 			<nav data-anchors>
 				<ul>
-					<li><a href="/#link_block">Продукция</a></li>
-					<li><a href="/#quality">Качество</a></li>
-					<li><a href="/#shema">Как получить заказ?</a></li>
-					<li><a href="/#skid">Скидки</a></li>
-					<li><a href="/#contacts">Контакты</a></li>
+					<li><a href="/#link_block">Product</a></li>
+					<li><a href="/#quality">Quality</a></li>
+					<li><a href="/#shema">How to receive your order</a></li>
+					<li><a href="/#skid">Discounts</a></li>
+					<li><a href="/#contacts">Contact details</a></li>
 				</ul>
 			</nav>
 		<?php endif; ?>
@@ -95,13 +95,13 @@
 </div>
 <header class="fixed">
 
-	<?if(wpm_get_language() == 'en'): //Локализация?>
+	<?if(wpm_get_language() == 'en' || is_front_page()): //Локализация?>
 		<div class="container">
 			<div class="header-content">
 				<div class="logo">
-					<a href="/en/">
-                        <img src="<?= get_field('logo',7) ?>" alt="Логотип компании Светлячок">
-						<div class="header">Firefly</div>
+					<a href="/">
+                        <img src="<?= get_field('logo',7) ?>" alt="USAfirefly logo">
+						<div class="header">USA Firefly</div>
                     </a>
 				</div>
 
@@ -125,10 +125,10 @@
 
 				<div class="contacts">
 					<div class="phone">
-						<!-- <a href="tel:<?= get_field('phone',7) ?>"><?= get_field('phone',7) ?></a> -->
+						<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" >+1-727-989-00-35</a>
 					</div>
 					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Request a phone call</a>
-					<?echo my_site_custom_languages_selector_template();?>
+					<? //echo my_site_custom_languages_selector_template();?>
 				</div>
 				<div class="mobile-menu-opener"></div>
 				<div class="clearfix"></div>
@@ -138,35 +138,35 @@
 		<div class="container">
 			<div class="header-content">
 				<div class="logo">
-					<a href="/"><img src="<?= get_field('logo',7) ?>" alt="Логотип компании Светлячок">
-					<div class="header">Светлячок</div></a>
+					<a href="/"><img src="<?= get_field('logo',7) ?>" alt="USAfirefly logo">
+					<div class="header">USAfirefly</div></a>
 				</div>
 				<?php if ((is_front_page()) and (!is_paged())) : ?>
 					<nav data-anchors>
-						<a href="#link_block">Продукция</a>
-						<a href="#quality">Качество</a>
-						<a href="#shema">Как получить заказ?</a>
-						<a href="#skid">Скидки</a>
-						<a href="#contacts">Контакты</a>
+						<a href="#link_block">Product</a>
+						<a href="#quality">Quality</a>
+						<a href="#shema">How to receive your order</a>
+						<a href="#skid">Discounts</a>
+						<a href="#contacts">Contact details</a>
 					</nav>
 				<?php else : ?>
 					<nav data-anchors>
-						<a href="/#link_block">Продукция</a>
-						<a href="/#quality">Качество</a>
-						<a href="/#shema">Как получить заказ?</a>
-						<a href="/#skid">Скидки</a>
-						<a href="/#contacts">Контакты</a>
+						<a href="/#link_block">Product</a>
+						<a href="/#quality">Quality</a>
+						<a href="/#shema">How to receive your order</a>
+						<a href="/#skid">Discounts</a>
+						<a href="/#contacts">Contact details</a>
 					</nav>
 				<?php endif; ?>
 				<div class="contacts">
 					<div class="phone">
 						<? if(isMobile()) {?>
-							<a href="tel:<?= get_field('phone',7) ?>"><?= get_field('phone',7) ?></a>
+							<a href="tel:<?= '+1-727-989-00-35' ?>"><?= '+1-727-989-00-35' ?></a>
 						<? } else { ?>
-							<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" ><?= get_field('phone',7) ?></a>
+							<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" ><?= '+1-727-989-00-35' ?></a>
 						<? } ?>
 					</div>
-					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Заказать звонок</a>
+					<a href="#" onclick="return false;" data-toggle="modal" data-target="#callback" class="y-but call-but">Request a phone call</a>
 					<? //echo my_site_custom_languages_selector_template();?>
 				</div>
 				<div class="clearfix"></div>
