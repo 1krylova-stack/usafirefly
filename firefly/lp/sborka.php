@@ -315,7 +315,7 @@ $ff_is_en = true;
 								<div class="ssf"><div class="left"><label><?php if($ff_is_en): //Локализация?>NAME<?php else:?>NAME<?php endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 								<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
 								<div class="ssf"><div class="left"><label><?php if($ff_is_en): //Локализация?>PHONE NUMBER<?php else:?>PHONE NUMBER<?php endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-								<div class="ssf"><div class="left"><label><?php if($ff_is_en): //Локализация?>QUESTION<?php else:?>QUESTION<?php endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+								<div class="ssf"><div class="left"><label><?php if($ff_is_en): //Локализация?>QUESTION<?php else:?>QUESTION<?php endif;?>:</label></div><div class="right"><?php echo "<textarea name=\"question\"></" . "textarea>"; ?></div><div class="clearfix"></div></div>
 								<div class="left personal-agree">	<label class="galka"> <input type="checkbox" required="" /> <?php if($ff_is_en): //Локализация?>I give you permission to process<br>my personal data.<?php else:?>I give you permission to process<br>my personal data<?php endif;?></label></div>
 								<div class="right submit-wrap">	<button type="submit" class="y-but y-but-invert "><?php if($ff_is_en): //Локализация?>ASK A QUESTION<?php else:?>ASK A QUESTION<?php endif;?></button></div>
 								<div class="clearfix"></div>
