@@ -273,7 +273,10 @@ $ff_is_reflective_en = ($ff_request_path === '/en/category/produkciya/reflective
 
 <section id="contacts">
 	<div class="map">
-		<?= get_field('map', $uid); ?>
+		<div id="mapHolder">
+		</div>
+		<div id="mapHolderMobile">
+		</div>
 		<div class="conts-wrap">
 			<div class="container">
 				<div class="ccs">
