@@ -145,18 +145,18 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 	<!--форма обратной связи-->
 	<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-		$_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		$_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product'):?>
 	<div class="callback-form">
 		<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product'):?>
 			<div class="center modal-title-one mb-3">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
 	    <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one">Заказать звонок директора</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product'):?>
 			<div class="center modal-title-one">Заказать звонок доброго специалиста</div>
 		<?endif;?>	
         
@@ -166,7 +166,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<input type="hidden" name="form_type" value="callback">
 						<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
-						<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+						<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
 						<?endif;?>	
 						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
@@ -195,18 +195,18 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 	<!--форма обратной связи ENG-->
 	<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-		$_SERVER['REQUEST_URI'] == '/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		$_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product'):?>
 	<div class="callback-form">
 		<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
 	    <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one">REQUEST A CALL FROM THE DIRECTOR</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product'):?>
 			<div class="center modal-title-one">REQUEST A CALL FROM KIND SPECIALIST</div>
 		<?endif;?>	
         
@@ -216,7 +216,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<input type="hidden" name="form_type" value="callback">
 						<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
-						<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+						<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
 						<?endif;?>	
 						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
@@ -278,7 +278,11 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="contacts">
 	<div class="map">
-	<?= get_field('map', $uid); ?>
+	<!-- <?= get_field('map', $uid); ?> Убрали карту -->
+		<div id="mapHolder">
+		</div>
+		<div id="mapHolderMobile">
+		</div>
 		<div class="conts-wrap">
 			<div class="container">
 				<div class="ccs">
@@ -297,28 +301,28 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 								<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
 									   style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 								<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>QUESTION<?else:?>ВОПРОС<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-								<div class="left personal-agree">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process<br>my personal data.<?else:?>Согласен на обработку<br/>персональных данных<?endif;?></label></div>
-								<div class="right submit-wrap">	<button type="submit" class="y-but y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>ASK A QUESTION<?else:?>Задать вопрос<?endif;?></button></div>
+								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>PHONE NUMBER<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+								<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>QUESTION<?else:?>QUESTION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+								<div class="left personal-agree">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process<br>my personal data.<?else:?>I give you permission to process<br>my personal data<?endif;?></label></div>
+								<div class="right submit-wrap">	<button type="submit" class="y-but y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>ASK A QUESTION<?else:?>ASK A QUESTION<?endif;?></button></div>
 								<div class="clearfix"></div>
 							</form>
 						</div>
 					</div>
 					<div class="right-40">
 						<div class="cont-c">
-							<div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>Phone number<?else:?>Телефон<?endif;?> </div>
+							<div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>Phone number<?else:?>Phone number<?endif;?> </div>
 							<div class="cont-d text"> <?= get_field('footer-phone', $uid); ?> </div>
 							<div class="cont-t"> E-mail </div>
 							<div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
-							<div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>ADDRESS<?else:?>Адрес<?endif;?> </div>
+							<div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>ADDRESS<?else:?>ADDRESS<?endif;?> </div>
 							<div class="cont-d text"> <?= get_field('footer-adress', $uid); ?> </div>
-							<div class="cont-t"> Мы в Whatsapp и Telegram </div>
+							<div class="cont-t"> We are on Whatsapp and Telegram </div>
 							<div class="cont-d text messengers">
-								<a href="https://wa.me/79006363775"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
-								<a href="https://t.me/svetlyachokk"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
+								<a href="https://wa.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
+								<a href="https://t.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
 							</div>
 						</div>
 					</div>
