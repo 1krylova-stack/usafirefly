@@ -7,6 +7,11 @@ $ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
 $ff_ts = time();
 $ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
+
+$ff_request_path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+if (substr($ff_request_path, -1) !== '/') {
+    $ff_request_path .= '/';
+}
 ?>
 
 <section id="brdh">
@@ -144,19 +149,19 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	<div class="clearfix"></div>
 
 	<!--форма обратной связи-->
-	<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-		$_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+	<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
+		$ff_request_path == '/category/produkciya/reflective-product/'):?>
 	<div class="callback-form">
-		<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+		<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one mb-3">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
-	    <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+	    <?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one">Заказать звонок директора</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one">Заказать звонок доброго специалиста</div>
 		<?endif;?>	
         
@@ -164,12 +169,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
 						<input type="hidden" name="form_type" value="callback">
-						<?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+						<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
-						<?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+						<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
 						<?endif;?>	
-						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
+						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
 
 						<!-- Signed anti-spam token -->
 						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
@@ -194,19 +199,19 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 	<!--КОНЕЦ форма обратной связи-->
 
 	<!--форма обратной связи ENG-->
-	<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-		$_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+	<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
+		$ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 	<div class="callback-form">
-		<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+		<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
-	    <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+	    <?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 			<div class="center modal-title-one">REQUEST A CALL FROM THE DIRECTOR</div>
-		<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one">REQUEST A CALL FROM KIND SPECIALIST</div>
 		<?endif;?>	
         
@@ -214,12 +219,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
 						<input type="hidden" name="form_type" value="callback">
-						<?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+						<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
-							<?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+							<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
 						<?endif;?>	
-						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
+						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
 
 						<!-- Signed anti-spam token -->
 						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
@@ -290,7 +295,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 							<form method="POST" action="/mail.php" data-with-ajax="">
 								<input type="hidden" name="form_type" value="question">
 								<input type="hidden" name="reason" value="Задать вопрос (форма в подвале)">
-								<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>">
+								<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
 
 								<!-- Signed anti-spam token -->
 								<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
