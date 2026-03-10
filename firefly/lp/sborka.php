@@ -1,4 +1,102 @@
-')):?>
+<?php
+$uid = get_the_ID();
+if (!$uid) {
+    $uid = 7;
+}
+
+/**
+ * Anti-spam signed token (must match footer.php + mail.php)
+ * Only safe chars: A-Z a-z 0-9 _
+ */
+$ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
+$ff_ts = time();
+$ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
+$ff_is_en = true;
+?>
+
+<section id="banner" >
+
+	<div class="banner" style="background-image:url(<?= get_field('img',$uid); ?>);">
+		<div class="container">
+			<div class="titile"><?= get_field('title',$uid); ?></div>		
+			<div class="stats">					
+				<?if($ff_is_en):?>		
+				<?php $table = get_field( 'sets_en',$uid ); ?>
+					<?php if ( $table ) {  ?>
+						<?php   foreach ( $table['body'] as $tr ) {  ?>
+							<?php      foreach ( $tr as $td ) {
+								echo '<div class="stat">';
+								echo $td['c'];
+								echo '</div>';  
+						}}}   ?>
+				<?else:?>	
+				<?php $table = get_field( 'sets',$uid ); ?>
+					<?php if ( $table ) {  ?>
+						<?php   foreach ( $table['body'] as $tr ) {  ?>
+							<?php      foreach ( $tr as $td ) {
+								echo '<div class="stat">';
+								echo $td['c'];
+								echo '</div>';  
+						}}}   ?>	
+				<?endif;?>				
+			</div>
+			<div <?if($ff_is_en): //Локализация?>id="action-eng"<?endif;?> class="action">
+				<!-- <div class="text-action"><?= get_field('action',$uid); ?></div> -->
+				<div><a href="#" onclick="$(`#get_it [name='reason']`).val('Запрос прайс-листа (верхний баннер)'); return false;" data-toggle="modal" data-target="#get_it" class="y-but get-price"><?if($ff_is_en):?>Request a Price List<?else:?>Request a Price List<?endif;?></a></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<a name="link_block"></a>
+<section id="link_block" >
+	
+	<div class="container">
+		<div class="titile"><?if($ff_is_en): //Локализация?>COMPLETE PRODUCT LINE<?else:?>COMPLETE PRODUCT LINE<?endif;?></div>		
+		<div class="link_block">				
+			<a class="item" href="<?if($ff_is_en): //Локализация?>/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/<?else:?>/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/<?endif;?>">
+				<span class="image first-image">
+                    <img
+                            src="<? bloginfo('template_url')?>/imgs/l1.jpg" alt=""
+                            srcset="<? bloginfo('template_url')?>/imgs/l1.jpg 320w, <? bloginfo('template_url')?>/imgs/l1.jpg 480w"
+                            sizes="(max-width: 320px) 320px, (max-width: 480px) 480px, 604px"
+                    >
+                </span>
+				<span class="name"><?if($ff_is_en): //Локализация?>REFLECTIVE TRIM & COMPONENTS<br>FOR APPAREL MANUFACTURERS<?else:?>REFLECTIVE TRIM & COMPONENTS<br>FOR APPAREL MANUFACTURERS<?endif;?></span>
+			</a>
+			<a class="item" href="<?if($ff_is_en): //Локализация?>/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/<?else:?>/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/<?endif;?>">
+				<span class="image webpcheck" style="">
+				</span>
+				<span class="name"><?if($ff_is_en): //Локализация?>REFLECTIVE PRODUCT CATALOG<?else:?>REFLECTIVE PRODUCT CATALOG<?endif;?></span>
+			</a>
+		</div>
+	</div>
+
+</section> 
+
+
+<!-- Убрали отсюда -->
+
+
+<section id="about">
+	<div class="container">
+		<div class="about-content">
+			<div class="left-60">
+				<div class="left-line"><h2><?= get_field('about-title', $uid); ?></h2></div>
+				<div class="text"><?= get_field('about-text', $uid); ?></div>
+				<? if(0) {?>
+					<div class="a-ats">
+						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at-icon', $uid); ?>"><p><?= get_field('at-text', $uid); ?></p></div>
+						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at2-icon', $uid); ?>"><p><?= get_field('at2-text', $uid); ?></p></div>
+						<div class="a-at"><img class="lazy_loading" data-src="<?= get_field('at3-icon', $uid); ?>"><p><?= get_field('at3-text', $uid); ?></p></div>
+					</div>
+					<div>
+						<?if(0): //force founder-photo variant?>
+						<?else:?>
+						<? foreach(acf_photo_gallery('cerf', get_the_ID()) as $cerf) { ?>
+						<a class="attachment_href" target="_blank" href="<?= $cerf['full_image_url']; ?>">
+							<?if(stristr($cerf['title'], '[:ru]')):?>
 							<? preg_match('~\[:'.wpm_get_language().'\](.+?)\[~', $cerf['title'], $matches);print_r($matches[1]); ?>
 							<?else:?>
 							<?= $cerf['title']?>
@@ -217,4 +315,36 @@
 								<div class="ssf"><div class="left"><label><?if($ff_is_en): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 								<div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
 								<div class="ssf"><div class="left"><label><?if($ff_is_en): //Локализация?>PHONE NUMBER<?else:?>PHONE NUMBER<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-								<div class="ssf"><div class="left"><label><?if($ff_is_en): //Локализация?>QUESTION<?else:?>QUESTION<?endif;?>:</label></div><div class="right"><textarea name="question">
+								<div class="ssf"><div class="left"><label><?if($ff_is_en): //Локализация?>QUESTION<?else:?>QUESTION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+								<div class="left personal-agree">	<label class="galka"> <input type="checkbox" required="" /> <?if($ff_is_en): //Локализация?>I give you permission to process<br>my personal data.<?else:?>I give you permission to process<br>my personal data<?endif;?></label></div>
+								<div class="right submit-wrap">	<button type="submit" class="y-but y-but-invert "><?if($ff_is_en): //Локализация?>ASK A QUESTION<?else:?>ASK A QUESTION<?endif;?></button></div>
+								<div class="clearfix"></div>
+							</form>
+						</div>
+					</div>
+					<div class="right-40">
+						<div class="cont-c">
+							<?if(0): //show full contacts block?>
+								<div class="cont-t"> E-mail </div>
+								<div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
+							<?else:?>
+								<div class="cont-t">Phone number </div>
+								<div class="cont-d text"> <?= get_field('footer-phone', $uid); ?> </div>
+								<div class="cont-t"> E-mail </div>
+								<div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
+								<div class="cont-t"> Adress </div>
+								<div class="cont-d text"> <?= get_field('footer-adress', $uid); ?> </div>
+								<div class="cont-t"> We are on Whatsapp and Telegram </div>
+								<div class="cont-d text messengers">
+									<a href="https://wa.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
+									<a href="https://t.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
+								</div>
+							<?endif;?>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
