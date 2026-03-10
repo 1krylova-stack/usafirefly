@@ -24,7 +24,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                 <?php
                 $args = [
                     'post_type' => 'post',
-                    'post__in' => [919,940,916,922,2259,925,928,913,931,1889]
+                    'post__in' => [916,922,1889,1912,949,937]
                 ];
                 $the_query = new WP_Query( $args );
                 ?>
@@ -50,13 +50,13 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
             </div>
         </div>
 
-        <h2 class="center">Фурнитура без светоотражения</h2>
+        <!-- Убрали с англоязычного сайта <h2 class="center">Non-Reflective Components</h2> 
         <div class="at-mar">
             <div class="prod_tabl">
                 <?php
                 $args = [
                     'post_type' => 'post',
-                    'post__in' => [937,949,1793,1912,1753,1769,1875]
+                    'post__in' => [937,949,1912,1753,1769,1875]
                 ];
                 $the_query = new WP_Query( $args );
                 ?>
@@ -78,20 +78,20 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
             </div>
         </div>
     </div>
-    <div class="clearfix"></div>
+    <div class="clearfix"></div> -->
 
     <!--форма обратной связи-->
     <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
         $_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
         <div class="callback-form">
             <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
-                <div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
+                <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
-                <div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
+                <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?endif;?>
             <div class="modal-dialog" role="document" style="margin:auto">
                 <div class="modal-content">
-                    <div class="center modal-title-one">Получить оптовый прайс</div>
+                    <div class="center modal-title-one">Request a Wholesale Price List</div>
                     <br>
                     <div class="contact-form">
                         <form method="POST" action="/mail.php" data-with-ajax="">
@@ -107,12 +107,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                             <input type="text" name="website" value="" autocomplete="off" tabindex="-1"
                                    style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
                             <div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-                            <div class="pp"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-                            <div class="send"><button type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>PHONE NUMBER<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ADDITIONAL INFORMATION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+                            <div class="pp"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>I give you permission to process my personal data<?endif;?></label></div>
+                            <div class="send"><button type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Request a Wholesale Price<?else:?>Request a Wholesale Price List<?endif;?></button></div>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -125,16 +125,16 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
     <!--форма обратной связи ENG-->
     <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-        $_SERVER['REQUEST_URI'] == '/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+        $_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
         <div class="callback-form">
             <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
-                <div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
-            <?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
-                <div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
+                <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
+            <?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+                <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?endif;?>
             <div class="modal-dialog" role="document" style="margin:auto">
                 <div class="modal-content">
-                    <div class="center modal-title-one">Get wholesale price</div>
+                    <div class="center modal-title-one">Request a Wholesale Price List</div>
                     <br>
                     <div class="contact-form">
                         <form method="POST" action="/mail.php" data-with-ajax="">
@@ -150,12 +150,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                             <input type="text" name="website" value="" autocomplete="off" tabindex="-1"
                                    style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
                             <div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ДОП. ИНФО<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-                            <div class="pp"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>Согласен на обработку персональных данных<?endif;?></label></div>
-                            <div class="send"><button type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Отправить<?endif;?></button></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>PHONE NUMBER<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+                            <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ADDITIONAL INFORMATION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+                            <div class="pp"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>I give you permission to process my personal data<?endif;?></label></div>
+                            <div class="send"><button type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Request a Wholesale Price<?else:?>Request a Wholesale Price List<?endif;?></button></div>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -189,28 +189,28 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
                                 <input type="text" name="website" value="" autocomplete="off" tabindex="-1"
                                        style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
 
-                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>ИМЯ<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
                                 <div class="ssf"><div class="left"><label>EMAIL:</label></div><div class="right"><input type="email" name="email" required /></div><div class="clearfix"></div></div>
-                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>ТЕЛЕФОН<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>QUESTION<?else:?>ВОПРОС<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
-                                <div class="left"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process<br>my personal data.<?else:?>Согласен на обработку<br/>персональных данных<?endif;?></label></div>
-                                <div class="right"><button type="submit" class="y-but y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>ASK A QUESTION<?else:?>Задать вопрос<?endif;?></button></div>
+                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE NUMBER<?else:?>PHONE NUMBER<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+                                <div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>QUESTION<?else:?>QUESTION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
+                                <div class="left"><label class="galka"><input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process<br>my personal data.<?else:?>I give you permission to process<br>my personal data<?endif;?></label></div>
+                                <div class="right"><button type="submit" class="y-but y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>ASK A QUESTION<?else:?>ASK A QUESTION<?endif;?></button></div>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
                     </div>
                     <div class="right-40">
                         <div class="cont-c">
-                            <div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>Phone number<?else:?>Телефон<?endif;?> </div>
+                            <div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>Phone number<?else:?>Phone number<?endif;?> </div>
                             <div class="cont-d text"> <?= get_field('footer-phone', $uid); ?> </div>
                             <div class="cont-t"> E-mail </div>
                             <div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
-                            <div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>ADDRESS<?else:?>Адрес<?endif;?> </div>
+                            <div class="cont-t"> <?if(wpm_get_language() == 'en'): //Локализация?>ADDRESS<?else:?>ADDRESS<?endif;?> </div>
                             <div class="cont-d text"> <?= get_field('footer-adress', $uid); ?> </div>
-                            <div class="cont-t"> Мы в Whatsapp и Telegram </div>
+                            <div class="cont-t"> We are on Whatsapp and Telegram</div>
                             <div class="cont-d text messengers">
-                                <a href="https://wa.me/79006363775"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
-                                <a href="https://t.me/svetlyachokk"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
+                                <a href="https://wa.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
+                                <a href="https://t.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
                             </div>
                         </div>
                     </div>
