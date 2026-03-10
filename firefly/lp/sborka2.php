@@ -65,7 +65,7 @@ if (substr($ff_request_path, -1) !== '/') {
 								</a>
 							<?php } ?>
 						<?php } else { ?>
-						<a href="#" onclick="$(`#zvonok [name='reason']`).val('Прайс для <?= get_field('name', $uid_page); ?>'); return false;" data-toggle="modal" data-target="#zvonok" class="y-but get-price"><?if(wpm_get_language() == 'en'): //Локализация?>GET THE WHOLESALE PRICE-LIST<?else:?>Получить оптовый прайс<?endif;?></a>
+						<a href="#" onclick="$(`#zvonok [name='reason']`).val('Прайс для <?= get_field('name', $uid_page); ?>'); return false;" data-toggle="modal" data-target="#zvonok" class="y-but get-price"><?if(wpm_get_language() == 'en'): //Локализация?>Request a Wholesale Price List<?else:?>Получить оптовый прайс<?endif;?></a>
 					<?php } ?>
                             <?if(wpm_get_language() == 'en'): //Локализация?>
 
@@ -149,17 +149,17 @@ if (substr($ff_request_path, -1) !== '/') {
 	<div class="clearfix"></div>
 
 	<!--форма обратной связи-->
-	<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
+	<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/' ||
 		$ff_request_path == '/category/produkciya/reflective-product/'):?>
 	<div class="callback-form">
-		<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+		<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
 			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
 		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one mb-3">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
-	    <?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+	    <?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
 			<div class="center modal-title-one">Заказать звонок директора</div>
 		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one">Заказать звонок доброго специалиста</div>
@@ -169,7 +169,7 @@ if (substr($ff_request_path, -1) !== '/') {
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
 						<input type="hidden" name="form_type" value="callback">
-						<?if($ff_request_path == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+						<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
 						<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
@@ -199,27 +199,27 @@ if (substr($ff_request_path, -1) !== '/') {
 	<!--КОНЕЦ форма обратной связи-->
 
 	<!--форма обратной связи ENG-->
-	<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
+	<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/' ||
 		$ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 	<div class="callback-form">
-		<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+		<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<?endif;?>
 	  <div class="modal-dialog" role="document" style="margin:auto">
 	    <div class="modal-content">
-	    <?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
-			<div class="center modal-title-one">REQUEST A CALL FROM THE DIRECTOR</div>
+	    <?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
+			<div class="center modal-title-one">Request Price List</div>
 		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
-			<div class="center modal-title-one">REQUEST A CALL FROM KIND SPECIALIST</div>
+			<div class="center modal-title-one">Request Price List</div>
 		<?endif;?>	
         
         <br>
         <div class="contact-form">
 					<form method="POST" action="/mail.php" data-with-ajax="">
 						<input type="hidden" name="form_type" value="callback">
-						<?if($ff_request_path == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+						<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка директора">
 							<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
 							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
@@ -237,7 +237,7 @@ if (substr($ff_request_path, -1) !== '/') {
 						<div class="ssf"><div class="left"><label>NAME:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label>PHONE NUMBER:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
 						<div class="pp personal-agree">	<label class="galka"> <input type="checkbox" required="" /> I give permission for you to process my personal information</label></div>
-						<div class="send submit-wrap">	<button  type="submit" class="y-but 1y-but-invert ">SEND</button></div>
+						<div class="send submit-wrap">	<button  type="submit" class="y-but 1y-but-invert ">Request Price List</button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
