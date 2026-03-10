@@ -55,7 +55,7 @@ $ff_is_en = true;
 	<div class="container">
 		<div class="titile"><?php if($ff_is_en): //Локализация?>COMPLETE PRODUCT LINE<?php else:?>COMPLETE PRODUCT LINE<?php endif;?></div>		
 		<div class="link_block">				
-			<a class="item" href="<?php if($ff_is_en): //Локализация?>/en/category/produkciya/components-for-manufacturers/<?php else:?>category/produkciya/components-for-manufacturers/<?php endif;?>">
+			<a class="item" href="<?php if($ff_is_en): //Локализация?>/category/produkciya/components-for-manufacturers/<?php else:?>category/produkciya/components-for-manufacturers/<?php endif;?>">
 				<span class="image first-image">
                     <img
                             src="<?php  bloginfo('template_url')?>/imgs/l1.jpg" alt=""
