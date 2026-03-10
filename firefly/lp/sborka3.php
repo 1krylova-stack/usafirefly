@@ -78,15 +78,15 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
             </div>
         </div>
     </div>
-    <div class="clearfix"></div> -->
+    <div class="clearfix"></div> Убрали с англоязычного сайта -->
 
     <!--форма обратной связи-->
-    <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
-        $_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+    <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/components-for-manufacturers/' ||
+        $_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
         <div class="callback-form">
-            <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+            <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/components-for-manufacturers/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
-            <?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/'):?>
+            <?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?endif;?>
             <div class="modal-dialog" role="document" style="margin:auto">
@@ -124,10 +124,10 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
     <!--КОНЕЦ форма обратной связи-->
 
     <!--форма обратной связи ENG-->
-    <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/' ||
+    <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/components-for-manufacturers/' ||
         $_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
         <div class="callback-form">
-            <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/svetovozvrashhayushhaya-furnitura-dlya-proizvoditelej-odezhdy/'):?>
+            <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/components-for-manufacturers/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
