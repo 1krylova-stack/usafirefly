@@ -12,6 +12,11 @@ $ff_request_path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 if (substr($ff_request_path, -1) !== '/') {
     $ff_request_path .= '/';
 }
+
+$ff_is_components_ru = ($ff_request_path === '/category/produkciya/components-for-manufacturers/');
+$ff_is_reflective_ru = ($ff_request_path === '/category/produkciya/reflective-product/');
+$ff_is_components_en = ($ff_request_path === '/en/category/produkciya/components-for-manufacturers/');
+$ff_is_reflective_en = ($ff_request_path === '/en/category/produkciya/reflective-product/');
 ?>
 
 <section id="brdh">
@@ -148,105 +153,6 @@ if (substr($ff_request_path, -1) !== '/') {
 	</div>
 	<div class="clearfix"></div>
 
-	<!--форма обратной связи-->
-	<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/' ||
-		$ff_request_path == '/category/produkciya/reflective-product/'):?>
-	<div class="callback-form">
-		<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
-			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
-		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
-			<div class="center modal-title-one mb-3">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
-		<?endif;?>
-	  <div class="modal-dialog" role="document" style="margin:auto">
-	    <div class="modal-content">
-	    <?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
-			<div class="center modal-title-one">Заказать звонок директора</div>
-		<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
-			<div class="center modal-title-one">Заказать звонок доброго специалиста</div>
-		<?endif;?>	
-        
-        <br>
-        <div class="contact-form">
-					<form method="POST" action="/mail.php" data-with-ajax="">
-						<input type="hidden" name="form_type" value="callback">
-						<?if($ff_request_path == 'category/produkciya/components-for-manufacturers/'):?>
-							<input type="hidden" name="reason" value="Запрос звонка директора">
-						<?elseif($ff_request_path == '/category/produkciya/reflective-product/'):?>
-							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
-						<?endif;?>	
-						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
-
-						<!-- Signed anti-spam token -->
-						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
-						<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
-
-						<!-- Honeypot anti-spam field -->
-						<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
-							   style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
-
-						<div class="ssf"><div class="left"><label>ИМЯ:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label>ТЕЛЕФОН:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="pp personal-agree">	<label class="galka"> <input type="checkbox" required="" /> Согласен на обработку персональных данных</label></div>
-						<div class="send submit-wrap">	<button  type="submit" class="y-but 1y-but-invert ">Отправить</button></div>
-						<div class="clearfix"></div>
-					</form>
-				</div>
-	    </div>
-	  </div>
-
-	</div>
-	<?endif;?>	
-	<!--КОНЕЦ форма обратной связи-->
-
-	<!--форма обратной связи ENG-->
-	<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/' ||
-		$ff_request_path == '/en/category/produkciya/reflective-product/'):?>
-	<div class="callback-form">
-		<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
-			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
-		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
-			<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
-		<?endif;?>
-	  <div class="modal-dialog" role="document" style="margin:auto">
-	    <div class="modal-content">
-	    <?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
-			<div class="center modal-title-one">Request Price List</div>
-		<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
-			<div class="center modal-title-one">Request Price List</div>
-		<?endif;?>	
-        
-        <br>
-        <div class="contact-form">
-					<form method="POST" action="/mail.php" data-with-ajax="">
-						<input type="hidden" name="form_type" value="callback">
-						<?if($ff_request_path == '/en/category/produkciya/components-for-manufacturers/'):?>
-							<input type="hidden" name="reason" value="Запрос звонка директора">
-							<?elseif($ff_request_path == '/en/category/produkciya/reflective-product/'):?>
-							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
-						<?endif;?>	
-						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
-
-						<!-- Signed anti-spam token -->
-						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
-						<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
-
-						<!-- Honeypot anti-spam field -->
-						<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
-							   style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
-
-						<div class="ssf"><div class="left"><label>NAME:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
-						<div class="ssf"><div class="left"><label>PHONE NUMBER:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
-						<div class="pp personal-agree">	<label class="galka"> <input type="checkbox" required="" /> I give permission for you to process my personal information</label></div>
-						<div class="send submit-wrap">	<button  type="submit" class="y-but 1y-but-invert ">Request Price List</button></div>
-						<div class="clearfix"></div>
-					</form>
-				</div>
-	    </div>
-	  </div>
-
-	</div>
-	<?endif;?>	
-	<!--КОНЕЦ форма обратной связи ENG-->
 
 </section>	
 
@@ -277,16 +183,97 @@ if (substr($ff_request_path, -1) !== '/') {
 
 <?}?>
 
+<?php if($ff_is_components_ru || $ff_is_reflective_ru):?>
+	<div class="callback-form">
+		<?php if($ff_is_components_ru):?>
+			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
+		<?php elseif($ff_is_reflective_ru):?>
+			<div class="center modal-title-one mb-3">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАС И ИДЕМ НАВСТРЕЧУ</div>
+		<?php endif;?>
+		<div class="modal-dialog" role="document" style="margin:auto">
+			<div class="modal-content">
+				<?php if($ff_is_components_ru):?>
+					<div class="center modal-title-one">Заказать звонок директора</div>
+				<?php elseif($ff_is_reflective_ru):?>
+					<div class="center modal-title-one">Заказать звонок доброго специалиста</div>
+				<?php endif;?>
+
+				<br>
+				<div class="contact-form">
+					<form method="POST" action="/mail.php" data-with-ajax="">
+						<input type="hidden" name="form_type" value="callback">
+						<?php if($ff_is_components_ru):?>
+							<input type="hidden" name="reason" value="Запрос звонка директора">
+						<?php elseif($ff_is_reflective_ru):?>
+							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
+						<?php endif;?>
+						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
+
+						<!-- Signed anti-spam token -->
+						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
+						<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
+
+						<!-- Honeypot anti-spam field -->
+						<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
+							   style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+
+						<div class="ssf"><div class="left"><label>ИМЯ:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label>ТЕЛЕФОН:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="pp personal-agree"><label class="galka"> <input type="checkbox" required="" /> Согласен на обработку персональных данных</label></div>
+						<div class="send submit-wrap"><button type="submit" class="y-but 1y-but-invert ">Отправить</button></div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif;?>
+
+<?php if($ff_is_components_en || $ff_is_reflective_en):?>
+	<div class="callback-form">
+		<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
+		<div class="modal-dialog" role="document" style="margin:auto">
+			<div class="modal-content">
+				<div class="center modal-title-one">Request Price List</div>
+
+				<br>
+				<div class="contact-form">
+					<form method="POST" action="/mail.php" data-with-ajax="">
+						<input type="hidden" name="form_type" value="callback">
+						<?php if($ff_is_components_en):?>
+							<input type="hidden" name="reason" value="Запрос звонка директора">
+						<?php elseif($ff_is_reflective_en):?>
+							<input type="hidden" name="reason" value="Запрос звонка доброго специалиста">
+						<?php endif;?>
+						<input type="hidden" name="referrer" value="<?= $_SERVER['HTTP_HOST'] . $ff_request_path; ?>">
+
+						<!-- Signed anti-spam token -->
+						<input type="hidden" name="ff_ts" value="<?= $ff_ts ?>">
+						<input type="hidden" name="ff_token" value="<?= $ff_token ?>">
+
+						<!-- Honeypot anti-spam field -->
+						<input type="text" name="website" value="" autocomplete="off" tabindex="-1"
+							   style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+
+						<div class="ssf"><div class="left"><label>NAME:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
+						<div class="ssf"><div class="left"><label>PHONE NUMBER:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
+						<div class="pp personal-agree"><label class="galka"> <input type="checkbox" required="" /> I give permission for you to process my personal information</label></div>
+						<div class="send submit-wrap"><button type="submit" class="y-but 1y-but-invert ">Request Price List</button></div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif;?>
+
 <?php if(is_single()){?>
 <!-- Убрали код отсюда -->
 <?}?>
 
 <section id="contacts">
 	<div class="map">
-		<div id="mapHolder">
-		</div>
-		<div id="mapHolderMobile">
-		</div>
+		<?= get_field('map', $uid); ?>
 		<div class="conts-wrap">
 			<div class="container">
 				<div class="ccs">
