@@ -65,7 +65,7 @@ $ff_is_en = true;
                 </span>
 				<span class="name"><?if($ff_is_en): //Локализация?>REFLECTIVE TRIM & COMPONENTS<br>FOR APPAREL MANUFACTURERS<?else:?>REFLECTIVE TRIM & COMPONENTS<br>FOR APPAREL MANUFACTURERS<?endif;?></span>
 			</a>
-			<a class="item" href="<?if($ff_is_en): //Локализация?>/en/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/<?else:?>/category/produkciya/katalog-svetovozvrashhayushhej-produkcii/<?endif;?>">
+			<a class="item" href="<?if($ff_is_en): //Локализация?>/category/produkciya/reflective-product/<?else:?>/category/produkciya/reflective-product/<?endif;?>">
 				<span class="image webpcheck" style="">
 				</span>
 				<span class="name"><?if($ff_is_en): //Локализация?>REFLECTIVE PRODUCT CATALOG<?else:?>REFLECTIVE PRODUCT CATALOG<?endif;?></span>
