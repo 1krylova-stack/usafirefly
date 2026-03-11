@@ -55,7 +55,7 @@ $ff_is_en = true;
 	<div class="container">
 		<div class="titile"><?php if($ff_is_en): //Локализация?>COMPLETE PRODUCT LINE<?php else:?>COMPLETE PRODUCT LINE<?php endif;?></div>		
 		<div class="link_block">				
-			<a class="item" href="<?php if($ff_is_en): //Локализация?>/category/produkciya/components-for-manufacturers/<?php else:?>category/produkciya/components-for-manufacturers/<?php endif;?>">
+			<a class="item" href="<?php if($ff_is_en): //Локализация?>/category/product/components-for-manufacturers/<?php else:?>/category/product/components-for-manufacturers/<?php endif;?>">
 				<span class="image first-image">
                     <img
                             src="<?php  bloginfo('template_url')?>/imgs/l1.jpg" alt=""
@@ -65,7 +65,7 @@ $ff_is_en = true;
                 </span>
 				<span class="name"><?php if($ff_is_en): //Локализация?>REFLECTIVE COMPONENTS<br>FOR APPAREL MANUFACTURERS<?php else:?>REFLECTIVE COMPONENTS<br>FOR APPAREL MANUFACTURERS<?php endif;?></span>
 			</a>
-			<a class="item" href="<?php if($ff_is_en): //Локализация?>/category/produkciya/reflective-product/<?php else:?>/category/produkciya/reflective-product/<?php endif;?>">
+			<a class="item" href="<?php if($ff_is_en): //Локализация?>/category/product/reflective-product/<?php else:?>/category/product/reflective-product/<?php endif;?>">
 				<span class="image webpcheck" style="">
 				</span>
 				<span class="name"><?php if($ff_is_en): //Локализация?>REFLECTIVE PRODUCT CATALOG<?php else:?>REFLECTIVE PRODUCT CATALOG<?php endif;?></span>
@@ -133,7 +133,7 @@ $ff_is_en = true;
 				<div class="right-40">
 					<!--div class="info-img center"><img src="<?= get_field('info-img', $uid); ?>" ></div-->
 					<div class="director-photo">
-						<img src="https://svetlyachok.info/wp-content/themes/firefly/imgs/dir_photo.jpg" alt="Photo CEO">
+						<img src="/wp-content/themes/firefly/imgs/dir_photo.jpg" alt="Photo CEO">
 					</div>
 					<div class="round-banner">
 						<div class="round-banner-part1">
