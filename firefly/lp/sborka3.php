@@ -170,7 +170,11 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 
 <section id="contacts">
     <div class="map">
-        <?= get_field('map', $uid); ?>
+        <div id="mapHolder">
+        <?= ""//get_field('map', $uid); ?>
+        </div>
+        <div id="mapHolderMobile">
+        </div>
         <div class="conts-wrap">
             <div class="container">
                 <div class="ccs">
