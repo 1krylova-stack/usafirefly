@@ -2,7 +2,6 @@
 <?php $uid_page = get_the_ID(); ?>
 
 <?php
-// Anti-spam signed token (must match mail.php + footer.php + other templates)
 $ff_secret = 'Sv3tly4ch0k_2026_SpamShield_f9A7KpQm2R8XwZ';
 $ff_ts = time();
 $ff_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
@@ -13,10 +12,8 @@ if (substr($ff_request_path, -1) !== '/') {
     $ff_request_path .= '/';
 }
 
-$ff_is_components_ru = ($ff_request_path === '/category/produkciya/components-for-manufacturers/');
-$ff_is_reflective_ru = ($ff_request_path === '/category/produkciya/reflective-product/');
-$ff_is_components_en = ($ff_request_path === '/en/category/produkciya/components-for-manufacturers/');
-$ff_is_reflective_en = ($ff_request_path === '/en/category/produkciya/reflective-product/');
+$ff_is_components = ($ff_request_path === '/category/product/components-for-manufacturers/');
+$ff_is_reflective = ($ff_request_path === '/category/product/reflective-product/');
 ?>
 
 <section id="brdh">
@@ -183,7 +180,7 @@ $ff_is_reflective_en = ($ff_request_path === '/en/category/produkciya/reflective
 
 <?}?>
 
-<?php if($ff_is_components_ru || $ff_is_reflective_ru):?>
+<?php if($ff_is_components || $ff_is_reflective):?>
 	<div class="callback-form">
 		<?php if($ff_is_components_ru):?>
 			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
@@ -229,7 +226,7 @@ $ff_is_reflective_en = ($ff_request_path === '/en/category/produkciya/reflective
 	</div>
 <?php endif;?>
 
-<?php if($ff_is_components_en || $ff_is_reflective_en):?>
+<?php if($ff_is_components || $ff_is_reflective):?>
 	<div class="callback-form">
 		<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<div class="modal-dialog" role="document" style="margin:auto">
