@@ -14,6 +14,16 @@ if (substr($ff_request_path, -1) !== '/') {
 
 $ff_is_components = ($ff_request_path === '/category/product/components-for-manufacturers/');
 $ff_is_reflective = ($ff_request_path === '/category/product/reflective-product/');
+
+$ff_lang_raw = function_exists('wpm_get_language') ? (string) wpm_get_language() : '';
+$ff_lang = strtolower(trim($ff_lang_raw));
+$ff_is_ru_lang = (strpos($ff_lang, 'ru') === 0);
+
+// EN is default for this project when language is unknown.
+$ff_is_components_ru = $ff_is_components && $ff_is_ru_lang;
+$ff_is_reflective_ru = $ff_is_reflective && $ff_is_ru_lang;
+$ff_is_components_en = $ff_is_components && !$ff_is_ru_lang;
+$ff_is_reflective_en = $ff_is_reflective && !$ff_is_ru_lang;
 ?>
 
 <section id="brdh">
@@ -180,7 +190,7 @@ $ff_is_reflective = ($ff_request_path === '/category/product/reflective-product/
 
 <?}?>
 
-<?php if($ff_is_components || $ff_is_reflective):?>
+<?php if($ff_is_components_ru || $ff_is_reflective_ru):?>
 	<div class="callback-form">
 		<?php if($ff_is_components_ru):?>
 			<div class="center modal-title-one" style="line-height:3;">БРЕНДИРУЕМ, ДЕЛАЕМ ПОД ВАШИ ПОТРЕБНОСТИ, ИДЕМ НАВСТРЕЧУ</div>
@@ -226,7 +236,7 @@ $ff_is_reflective = ($ff_request_path === '/category/product/reflective-product/
 	</div>
 <?php endif;?>
 
-<?php if($ff_is_components || $ff_is_reflective):?>
+<?php if($ff_is_components_en || $ff_is_reflective_en):?>
 	<div class="callback-form">
 		<div class="center modal-title-one" style="line-height:3;">WE BRAND, WE ACT ACCORDING TO YOUR REQUIREMENTS, AND MEET YOUR NEEDS</div>
 		<div class="modal-dialog" role="document" style="margin:auto">
