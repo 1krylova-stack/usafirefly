@@ -81,12 +81,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
     <div class="clearfix"></div> Убрали с англоязычного сайта -->
 
     <!--форма обратной связи-->
-    <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/components-for-manufacturers/' ||
-        $_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+    <?if($_SERVER['REQUEST_URI'] == '/category/product/components-for-manufacturers/' ||
+        $_SERVER['REQUEST_URI'] == '/category/product/reflective-product/'):?>
         <div class="callback-form">
-            <?if($_SERVER['REQUEST_URI'] == '/category/produkciya/components-for-manufacturers/'):?>
+            <?if($_SERVER['REQUEST_URI'] == '/category/product/components-for-manufacturers/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
-            <?elseif($_SERVER['REQUEST_URI'] == '/category/produkciya/reflective-product/'):?>
+            <?elseif($_SERVER['REQUEST_URI'] == '/category/product/reflective-product/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?endif;?>
             <div class="modal-dialog" role="document" style="margin:auto">
@@ -124,12 +124,12 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
     <!--КОНЕЦ форма обратной связи-->
 
     <!--форма обратной связи ENG-->
-    <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/components-for-manufacturers/' ||
-        $_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+    <?if($_SERVER['REQUEST_URI'] == '/en/category/product/components-for-manufacturers/' ||
+        $_SERVER['REQUEST_URI'] == '/en/category/product/reflective-product/'):?>
         <div class="callback-form">
-            <?if($_SERVER['REQUEST_URI'] == '/en/category/produkciya/components-for-manufacturers/'):?>
+            <?if($_SERVER['REQUEST_URI'] == '/en/category/product/components-for-manufacturers/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
-            <?elseif($_SERVER['REQUEST_URI'] == '/en/category/produkciya/reflective-product/'):?>
+            <?elseif($_SERVER['REQUEST_URI'] == '/en/category/product/reflective-product/'):?>
                 <div class="center modal-title-one" style="line-height:3;">Custom Branding Available <br>— Built to Your Specifications and Designed to Meet Your Needs</div>
             <?endif;?>
             <div class="modal-dialog" role="document" style="margin:auto">
