@@ -64,11 +64,21 @@ if ($now - $last < 15) {
 file_put_contents($key, (string)$now);
 
 /* =========================
-   REFERER CHECK
+   REFERER CHECK (same host)
 ========================= */
 $ref = (string)($_SERVER['HTTP_REFERER'] ?? '');
-if ($ref !== '' && stripos($ref, 'svetlyachok.info') === false) {
-    fail(200, 'Bad referer');
+$host = (string)($_SERVER['HTTP_HOST'] ?? '');
+if ($ref !== '') {
+    $refHost = strtolower((string)parse_url($ref, PHP_URL_HOST));
+    $allowedHosts = ['usafirefly.com', 'www.usafirefly.com'];
+
+    if ($host !== '') {
+        $allowedHosts[] = strtolower($host);
+    }
+
+    if ($refHost !== '' && !in_array($refHost, array_unique($allowedHosts), true)) {
+        fail(200, 'Bad referer');
+    }
 }
 $page = ($ref !== '') ? strtok($ref, '?') : '';
 
@@ -131,66 +141,14 @@ try {
     $mail->Timeout    = 10;
 
     // From должен совпадать с SMTP логином
-    $mail->setFrom($smtp_user, 'Заявка с сайта Svetlyachok.info');
+    $mail->setFrom($smtp_user, 'Заявка с сайта usafirefly.com');
     $mail->Sender = $smtp_user;
 
     // Reply-To на рабочий ящик + на email клиента (ниже добавим)
     $mail->addReplyTo('svet@svetlyachok.info', 'Светлячок');
 
-    // Всегда отправляем на эти
-    $mail->addAddress('svet@svetlyachok.info');
-    $mail->addAddress('miccollector01@yandex.ru');
-
-    // Ваша логика маршрутизации (оставляем)
-    $pages = [
-        'https://svetlyachok.info/shnury/',
-        'https://svetlyachok.info/shevrony/',
-        'https://svetlyachok.info/velkro-novogo-pokoleniya/',
-        'https://svetlyachok.info/shevrony-mirovogo-urovnya/',
-        'https://svetlyachok.info/termo-lenta-dlya-shvov/',
-        'https://svetlyachok.info/termometry-dlya-odezhdy/',
-        'svetlyachok.info/shnury/',
-        'svetlyachok.info/shevrony/',
-        'svetlyachok.info/velkro-novogo-pokoleniya/',
-        'svetlyachok.info/shevrony-mirovogo-urovnya/',
-        'svetlyachok.info/termo-lenta-dlya-shvov/',
-        'svetlyachok.info/termometry-dlya-odezhdy/',
-        'https://svetlyachok.info/shnury',
-        'https://svetlyachok.info/shevrony',
-        'https://svetlyachok.info/velkro-novogo-pokoleniya',
-        'https://svetlyachok.info/shevrony-mirovogo-urovnya',
-        'https://svetlyachok.info/termo-lenta-dlya-shvov',
-        'https://svetlyachok.info/termometry-dlya-odezhdy',
-        'svetlyachok.info/shnury',
-        'svetlyachok.info/shevrony',
-        'svetlyachok.info/velkro-novogo-pokoleniya',
-        'svetlyachok.info/shevrony-mirovogo-urovnya',
-        'svetlyachok.info/termo-lenta-dlya-shvov',
-        'svetlyachok.info/termometry-dlya-odezhdy',
-
-        'https://svetlyachok.info/lyuversy/',
-        'https://svetlyachok.info/nakonechniki-na-shnur/',
-        'https://svetlyachok.info/fiksatory-dlya-shnura/',
-        'https://svetlyachok.info/molnii-i-knopki-ukk/',
-        'svetlyachok.info/lyuversy/',
-        'svetlyachok.info/nakonechniki-na-shnur/',
-        'svetlyachok.info/fiksatory-dlya-shnura/',
-        'svetlyachok.info/molnii-i-knopki-ukk/',
-        'https://svetlyachok.info/lyuversy',
-        'https://svetlyachok.info/nakonechniki-na-shnur',
-        'https://svetlyachok.info/fiksatory-dlya-shnura',
-        'https://svetlyachok.info/molnii-i-knopki-ukk',
-        'svetlyachok.info/lyuversy',
-        'svetlyachok.info/nakonechniki-na-shnur',
-        'svetlyachok.info/fiksatory-dlya-shnura',
-        'svetlyachok.info/molnii-i-knopki-ukk'
-    ];
-
-    if (in_array($page, $pages, true)) {
-        $mail->addAddress('Grea1@yandex.ru');
-    } else {
-        $mail->addAddress('roman.parshukov@gmail.com');
-    }
+    // Все заявки отправляем на один ящик (без маршрутизации)
+    $mail->addAddress('Grea1@yandex.ru');
 
     $mail->isHTML(true);
     $mail->Subject = 'Новая заявка';
@@ -222,17 +180,6 @@ try {
         ' | page=' . $page .
         ' | to=' . implode(',', array_column($mail->getToAddresses(), 0))
     );
-
-    // CRM (как было раньше)
-    $crmUrl = in_array($page, $pages, true)
-        ? "http://crm2.svetlyachok.info/index.php/common/createbysite?"
-        : "http://crm.svetlyachok.info/index.php/common/createbysite?";
-
-    $postForCrm = $_POST;
-    unset($postForCrm['website'], $postForCrm['ff_ts'], $postForCrm['ff_token']);
-
-    $ctx = stream_context_create(['http' => ['timeout' => 3]]);
-    @file_get_contents($crmUrl . http_build_query($postForCrm), false, $ctx);
 
     die(json_encode(['success' => true]));
 } catch (\Throwable $e) {
