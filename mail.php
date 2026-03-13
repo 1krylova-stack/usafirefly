@@ -68,9 +68,15 @@ file_put_contents($key, (string)$now);
 ========================= */
 $ref = (string)($_SERVER['HTTP_REFERER'] ?? '');
 $host = (string)($_SERVER['HTTP_HOST'] ?? '');
-if ($ref !== '' && $host !== '') {
-    $refHost = (string)parse_url($ref, PHP_URL_HOST);
-    if ($refHost !== '' && strcasecmp($refHost, $host) !== 0) {
+if ($ref !== '') {
+    $refHost = strtolower((string)parse_url($ref, PHP_URL_HOST));
+    $allowedHosts = ['usafirefly.com', 'www.usafirefly.com'];
+
+    if ($host !== '') {
+        $allowedHosts[] = strtolower($host);
+    }
+
+    if ($refHost !== '' && !in_array($refHost, array_unique($allowedHosts), true)) {
         fail(200, 'Bad referer');
     }
 }
@@ -135,14 +141,14 @@ try {
     $mail->Timeout    = 10;
 
     // From должен совпадать с SMTP логином
-    $mail->setFrom($smtp_user, 'Заявка с сайта Svetlyachok.info');
+    $mail->setFrom($smtp_user, 'Заявка с сайта usafirefly.com');
     $mail->Sender = $smtp_user;
 
     // Reply-To на рабочий ящик + на email клиента (ниже добавим)
     $mail->addReplyTo('svet@svetlyachok.info', 'Светлячок');
 
     // Все заявки отправляем на один ящик (без маршрутизации)
-    $mail->addAddress('miccollector01@yandex.ru');
+    $mail->addAddress('Grea1@yandex.ru');
 
     $mail->isHTML(true);
     $mail->Subject = 'Новая заявка';
