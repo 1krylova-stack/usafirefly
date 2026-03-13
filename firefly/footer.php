@@ -105,12 +105,14 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 </button>
 <?php } ?>
 
+<div class="site-copyright">USA FIREFLY LLC, all rights reserved.</div>
+
 <div class="modal-backdrop fade">
 	<div id="zvonok" class="modal fade" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>GET A PRICE-LIST<?else:?>GET A PRICE-LIST<?endif;?></div>
+		<div class="center modal-title-one"><?if(wpm_get_language() == 'en'): //Локализация?>Request a Wholesale Price List<?else:?>Request a Wholesale Price List<?endif;?></div>
         <div class="center modal-title"><?if(wpm_get_language() == 'en'): //Локализация?>Send your contact details<?else:?>Send your contact details<?endif;?></div>
         <br>
         <div class="contact-form">
@@ -131,7 +133,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE<?else:?>PHONE<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>ADDITIONAL INFORMATION<?else:?>ADDITIONAL INFORMATION<?endif;?>:</label></div><div class="right"><textarea name="question"></textarea></div><div class="clearfix"></div></div>
 						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>I give you permission to process my personal data<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Send<?endif;?></button></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Request Price List<?else:?>Request Price List<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -164,7 +166,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE<?else:?>PHONE<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
 						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>I give you permission to process my personal data<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Send<?endif;?></button></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>REQUEST A PHONE CALL<?else:?>REQUEST A PHONE CALL<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -197,7 +199,7 @@ $ff_token = hash_hmac('sha256', $ff_ts . '|' . $ff_ua, $ff_secret);
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>NAME<?else:?>NAME<?endif;?>:</label></div><div class="right"><input type="text" name="name" required /></div><div class="clearfix"></div></div>
 						<div class="ssf"><div class="left"><label><?if(wpm_get_language() == 'en'): //Локализация?>PHONE<?else:?>PHONE<?endif;?>:</label></div><div class="right"><input type="text" name="phone" required /></div><div class="clearfix"></div></div>
 						<div class="pp">	<label class="galka"> <input type="checkbox" required="" /> <?if(wpm_get_language() == 'en'): //Локализация?>I give you permission to process my personal data.<?else:?>I give you permission to process my personal data<?endif;?></label></div>
-						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Send<?else:?>Send<?endif;?></button></div>
+						<div class="send">	<button  type="submit" class="y-but 1y-but-invert "><?if(wpm_get_language() == 'en'): //Локализация?>Request price list<?else:?>Request price list<?endif;?></button></div>
 						<div class="clearfix"></div>
 					</form>
 				</div>
