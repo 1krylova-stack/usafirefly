@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+get_header();
+
+$uid = get_the_ID();
+if (!$uid) {
+    $uid = 7;
+}
+?>
 
     <main>
         <div class="container">
@@ -45,22 +52,17 @@
                         </div>
                         <div class="right-40">
                             <div class="cont-c">
-                                <?if(wpm_get_language() == 'en'): //Локализация?>
-                                    <div class="cont-t"> E-mail </div>
-                                    <div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
-                                <?else:?>
-                                    <div class="cont-t">Телефон </div>
-                                    <div class="cont-d text"> <?= get_field('footer-phone', $uid); ?> </div>
-                                    <div class="cont-t"> E-mail </div>
-                                    <div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
-                                    <div class="cont-t"> Адрес </div>
-                                    <div class="cont-d text"> <?= get_field('footer-adress', $uid); ?> </div>
-                                    <div class="cont-t"> Мы в Whatsapp и Telegram </div>
-                                    <div class="cont-d text messengers">
-                                        <a href="https://wa.me/79006363775"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
-                                        <a href="https://t.me/svetlyachokk"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
-                                    </div>
-                                <?endif;?>
+                                <div class="cont-t">Phone number </div>
+                                <div class="cont-d text"> <?= get_field('footer-phone', $uid); ?> </div>
+                                <div class="cont-t"> E-mail </div>
+                                <div class="cont-d text"> <?= get_field('footer-email', $uid); ?> </div>
+                                <div class="cont-t"> Adress </div>
+                                <div class="cont-d text"> <?= get_field('footer-adress', $uid); ?> </div>
+                                <div class="cont-t"> We are on Whatsapp and Telegram </div>
+                                <div class="cont-d text messengers">
+                                    <a href="https://wa.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/wa-icon.svg" alt=""></a>
+                                    <a href="https://t.me/17279890035"><img src="<? bloginfo('template_url')?>/imgs/tg-icon.svg" alt=""></a>
+                                </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
