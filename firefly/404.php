@@ -3,17 +3,16 @@
     <main>
         <div class="container">
             <div class="typography-enabled">
-                <h1>Ой!</h1>
-                <h2>Похоже мы не можем найти нужную вам страницу.</a></h2>
-                <h6>Код ошибки: 404</h6>
-                <p>Вот несколько полезных ссылок:</p>
+                <h1>Ouch!</h1>
+                <h2>It looks like we can't find the page you're looking for.</a></h2>
+                <h6>Error code: 404</h6>
+                <p>Useful links:</p>
                 <ul>
-                    <li><a href="https://svetlyachok.info/">Главная</a></li>
-                    <li><a href="https://svetlyachok.info/#link_block">Продукция</a></li>
-                    <li><a href="https://svetlyachok.info/#quality">Качество</a></li>
-                    <li><a href="https://svetlyachok.info/#skid">Скидки</a></li>
-                    <li><a href="https://svetlyachok.info/#shema">Как получить заказ</a></li>
-                    <li><a href="https://svetlyachok.info/#contacts">Контакты</a></li>
+                    <li><a href="/">Main page</a></li>
+                    <li><a href="/#link_block">Product</a></li>
+                    <li><a href="/#quality">Quality</a></li>
+                    <li><a href="/#shema">How to receive your order</a></li>
+                    <li><a href="/#contacts">Contact details</a></li>
                 </ul>
             </div>
         </div>
