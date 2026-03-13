@@ -187,10 +187,9 @@ try {
     ];
 
     if (in_array($page, $pages, true)) {
-        $mail->addAddress('miccollector01@yandex.ru');
+        $mail->addAddress('Grea1@yandex.ru');
     } else {
-        $mail->addAddress('micle-belogrivtsev@yandex.ru');
-        $mail->addAddress('sokolga78@mail.ru');
+        $mail->addAddress('roman.parshukov@gmail.com');
     }
 
     $mail->isHTML(true);
