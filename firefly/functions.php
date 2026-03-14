@@ -2,6 +2,7 @@
 
 if ( function_exists('add_theme_support')) {
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
 	add_image_size('img_slider', 220, 300);
 }
 
@@ -247,5 +248,81 @@ function my_site_custom_languages_selector_template () {
   }
 } // end виджет WP multilang
 
+function firefly_strip_language_markers($text) {
+  if (!is_string($text)) {
+    return $text;
+  }
+
+  $clean = preg_replace('/\[:[a-zA-Z_-]+\]/', '', $text);
+  $clean = str_replace('[:]', '', $clean);
+  $clean = preg_replace('/\s+/', ' ', $clean);
+
+  return trim($clean);
+}
+
+function firefly_fallback_seo_title($title) {
+  $title = firefly_strip_language_markers($title);
+
+  if ($title !== '') {
+    return $title;
+  }
+
+  if (is_singular()) {
+    $single_title = firefly_strip_language_markers(single_post_title('', false));
+    if ($single_title !== '') {
+      return $single_title;
+    }
+  }
+
+  if (is_category() || is_tag() || is_tax()) {
+    $term_title = firefly_strip_language_markers(single_term_title('', false));
+    if ($term_title !== '') {
+      return $term_title;
+    }
+  }
+
+  return firefly_strip_language_markers(get_bloginfo('name'));
+}
+
+function firefly_fallback_seo_description($description) {
+  $description = firefly_strip_language_markers($description);
+
+  if ($description !== '') {
+    return $description;
+  }
+
+  if (is_singular()) {
+    $post_id = get_queried_object_id();
+    $excerpt = firefly_strip_language_markers(get_the_excerpt($post_id));
+
+    if ($excerpt !== '') {
+      return $excerpt;
+    }
+
+    $content = wp_strip_all_tags((string) get_post_field('post_content', $post_id));
+    $content = firefly_strip_language_markers($content);
+
+    if ($content !== '') {
+      return wp_trim_words($content, 25, '...');
+    }
+  }
+
+  if (is_category() || is_tag() || is_tax()) {
+    $term_description = firefly_strip_language_markers(strip_tags((string) term_description()));
+    if ($term_description !== '') {
+      return wp_trim_words($term_description, 25, '...');
+    }
+  }
+
+  return firefly_strip_language_markers(get_bloginfo('description'));
+}
+
+add_filter('wpseo_title', 'firefly_fallback_seo_title', 20);
+add_filter('wpseo_opengraph_title', 'firefly_fallback_seo_title', 20);
+add_filter('wpseo_twitter_title', 'firefly_fallback_seo_title', 20);
+
+add_filter('wpseo_metadesc', 'firefly_fallback_seo_description', 20);
+add_filter('wpseo_opengraph_desc', 'firefly_fallback_seo_description', 20);
+add_filter('wpseo_twitter_description', 'firefly_fallback_seo_description', 20);
 
 ?>
