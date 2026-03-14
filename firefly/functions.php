@@ -260,8 +260,36 @@ function firefly_strip_language_markers($text) {
   return trim($clean);
 }
 
+function firefly_normalize_seo_text($text) {
+  $text = firefly_strip_language_markers($text);
+
+  if (!is_string($text) || $text === '') {
+    return '';
+  }
+
+  $site_name = firefly_strip_language_markers(get_bloginfo('name'));
+
+  if ($site_name !== '') {
+    $text = str_ireplace('%%sitename%%', $site_name, $text);
+    $text = preg_replace('/' . preg_quote($site_name, '/') . '/iu', $site_name, $text);
+  }
+
+  // Remove unresolved Yoast placeholders like %%title%%.
+  $text = preg_replace('/%%[^%]+%%/u', '', $text);
+
+  // Trim leading separators that can appear when title parts are empty.
+  $text = preg_replace('/^[\s\-–—|:]+/u', '', $text);
+
+  $text = trim(preg_replace('/\s+/u', ' ', $text));
+
+  // Collapse accidental duplicate content like "TitleTitle" (case-insensitive).
+  $text = preg_replace('/^(.+?)\1+$/uis', '$1', $text);
+
+  return trim($text);
+}
+
 function firefly_fallback_seo_title($title) {
-  $title = firefly_strip_language_markers($title);
+  $title = firefly_normalize_seo_text($title);
 
   if ($title !== '') {
     return $title;
@@ -285,7 +313,7 @@ function firefly_fallback_seo_title($title) {
 }
 
 function firefly_fallback_seo_description($description) {
-  $description = firefly_strip_language_markers($description);
+  $description = firefly_normalize_seo_text($description);
 
   if ($description !== '') {
     return $description;
